@@ -40,7 +40,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css">
@@ -61,20 +61,20 @@
   --rv-paper-2:#EAE6DC;
   --rv-grey:#8992A0;
   --rv-line: rgba(137,146,160,0.35);
-  --font-display:'Oswald', sans-serif;
-  --font-body:'Inter', sans-serif;
+  --font-display:'Poppins', sans-serif;
+  --font-body:'Poppins', sans-serif;
   --font-mono:'JetBrains Mono', monospace;
 }
 *{scroll-behavior:smooth;}
 body{font-family:var(--font-body); background:var(--rv-paper); color:var(--rv-graphite); overflow-x:hidden;}
-h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em;}
+h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0; font-weight:600;}
 .font-mono{font-family:var(--font-mono);}
 
 /* rail-guide signature: vertical dashed shaft line with a moving carriage mark */
 .rail-guide{position:relative; padding-left:22px;}
-.rail-guide::before{content:""; position:absolute; left:0; top:4px; bottom:4px; width:2px;
-  background:repeating-linear-gradient(to bottom, var(--rv-steel) 0 6px, transparent 6px 12px);}
-.rail-guide::after{content:""; position:absolute; left:-3px; top:0; width:8px; height:8px; background:var(--rv-amber); border-radius:1px;}
+.rail-guide::before{content:""; position:absolute; left:0; top:4px; bottom:4px; width:2px; border-radius:2px;
+  background:var(--rv-steel); opacity:0.35;}
+.rail-guide::after{content:""; position:absolute; left:-3px; top:0; width:8px; height:8px; background:var(--rv-amber); border-radius:50%;}
 
 .blueprint-grid-dark{
   background-image:
@@ -84,32 +84,30 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
 }
 
 .dim-tag{
-  font-family:var(--font-mono); font-size:11px; letter-spacing:0.12em; color:var(--rv-steel-light);
-  display:inline-flex; align-items:center; gap:8px; text-transform:uppercase;
+  font-family:var(--font-body); font-weight:500; font-size:12px; letter-spacing:0.02em; color:var(--rv-steel-light);
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(46,123,176,0.12); border:1px solid rgba(46,123,176,0.3);
+  padding:7px 16px; border-radius:9999px;
 }
-.dim-tag::before{content:""; width:24px; height:1px; background:var(--rv-amber); display:inline-block;}
+.dim-tag::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--rv-amber); display:inline-block;}
 
-.crop-card{position:relative;}
-.crop-card::before, .crop-card::after{
-  content:""; position:absolute; width:14px; height:14px; border-color:var(--rv-steel); opacity:0.5;
-}
-.crop-card::before{top:8px; left:8px; border-top:2px solid; border-left:2px solid;}
-.crop-card::after{top:8px; right:8px; border-top:2px solid; border-right:2px solid;}
+.crop-card{position:relative; box-shadow:0 2px 14px rgba(16,22,28,0.06); transition:box-shadow .25s ease, transform .25s ease;}
+.crop-card:hover{box-shadow:0 16px 36px rgba(16,22,28,0.12); transform:translateY(-4px);}
 
 .glass{background: rgba(16,22,28,0.55); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.08);}
 
-.btn-primary-rv{background: var(--rv-amber); color:#10161C; font-family:var(--font-display); letter-spacing:0.04em; text-transform:uppercase; font-size:14px; padding:14px 28px; border-radius:4px; transition:all .25s ease; display:inline-flex; align-items:center; gap:10px; box-shadow:0 8px 24px rgba(242,162,12,0.25);}
+.btn-primary-rv{background: var(--rv-amber); color:#10161C; font-family:var(--font-display); font-weight:600; font-size:15px; padding:14px 30px; border-radius:9999px; transition:all .25s ease; display:inline-flex; align-items:center; gap:10px; box-shadow:0 8px 24px rgba(242,162,12,0.25);}
 .btn-primary-rv:hover{background:var(--rv-amber-light); transform:translateY(-2px); box-shadow:0 12px 28px rgba(242,162,12,0.35);}
-.btn-outline-rv{border:1px solid rgba(255,255,255,0.35); color:#fff; font-family:var(--font-display); letter-spacing:0.04em; text-transform:uppercase; font-size:14px; padding:14px 28px; border-radius:4px; transition:all .25s ease; display:inline-flex; align-items:center; gap:10px;}
+.btn-outline-rv{border:1.5px solid rgba(255,255,255,0.35); color:#fff; font-family:var(--font-display); font-weight:600; font-size:15px; padding:14px 30px; border-radius:9999px; transition:all .25s ease; display:inline-flex; align-items:center; gap:10px;}
 .btn-outline-rv:hover{background:rgba(255,255,255,0.1); border-color:#fff;}
-.btn-whatsapp-rv{background:#25D366; color:#0b1a12; font-family:var(--font-display); letter-spacing:0.06em; text-transform:uppercase; font-weight:600; font-size:14px; padding:14px 28px; border-radius:4px; transition:all .25s ease; display:inline-flex; align-items:center; gap:10px; box-shadow:0 8px 24px rgba(37,211,102,0.3);}
+.btn-whatsapp-rv{background:#25D366; color:#0b1a12; font-family:var(--font-display); font-weight:600; font-size:15px; padding:14px 30px; border-radius:9999px; transition:all .25s ease; display:inline-flex; align-items:center; gap:10px; box-shadow:0 8px 24px rgba(37,211,102,0.3);}
 .btn-whatsapp-rv:hover{background:#2fe374; transform:translateY(-2px); box-shadow:0 12px 28px rgba(37,211,102,0.4);}
 
-.nav-link{position:relative; font-family:var(--font-display); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:#DDE3E9;}
-.nav-link::after{content:""; position:absolute; left:0; bottom:-6px; width:0; height:2px; background:var(--rv-amber); transition:width .25s ease;}
+.nav-link{position:relative; font-family:var(--font-body); font-weight:500; font-size:14.5px; color:#DDE3E9;}
+.nav-link::after{content:""; position:absolute; left:0; bottom:-6px; width:0; height:2px; border-radius:2px; background:var(--rv-amber); transition:width .25s ease;}
 .nav-link:hover::after, .nav-link.active::after{width:100%;}
 
-.section-eyebrow{font-family:var(--font-mono); font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--rv-steel);}
+.section-eyebrow{font-family:var(--font-body); font-weight:600; font-size:13px; letter-spacing:0.04em; color:var(--rv-steel); background:rgba(29,91,134,0.08); display:inline-block; padding:5px 14px; border-radius:9999px;}
 
 ::-webkit-scrollbar{width:10px;}
 ::-webkit-scrollbar-track{background:var(--rv-paper);}
@@ -126,8 +124,9 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
 @keyframes blink-glow{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,0.55);}50%{box-shadow:0 0 0 10px rgba(37,211,102,0);}}
 .whatsapp-blink{animation: blink-glow 1.8s ease-in-out infinite;}
 
-.stat-frame{border:1px solid var(--rv-line); position:relative;}
-.stat-frame .stat-tag{position:absolute; top:-10px; left:14px; background:var(--rv-graphite); padding:0 8px; font-family:var(--font-mono); font-size:10px; letter-spacing:0.1em; color:var(--rv-steel-light); text-transform:uppercase;}
+.stat-frame{background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:16px; position:relative;}
+.stat-frame .stat-tag{position:absolute; top:-11px; left:16px; background:var(--rv-graphite); padding:1px 10px; font-family:var(--font-body); font-weight:600; font-size:10px; letter-spacing:0.06em; color:var(--rv-steel-light); border-radius:9999px; border:1px solid rgba(255,255,255,0.1);}
+
 
 .cat-chip{border:1px solid var(--rv-line); transition:all .25s ease;}
 .cat-chip:hover{border-color:var(--rv-amber); background:rgba(242,162,12,0.07); transform:translateY(-3px);}
@@ -138,6 +137,67 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
 @media (max-width: 900px){ .parallax-bg{background-attachment:scroll;} }
 
 .gauge-ring{transform:rotate(-90deg); transform-origin:50% 50%;}
+
+/* ---- Hero ambient glow ---- */
+.hero-glow{position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(60% 55% at 72% 45%, rgba(242,162,12,0.16), transparent 70%),
+             radial-gradient(45% 45% at 18% 60%, rgba(46,123,176,0.18), transparent 70%);}
+
+/* ---- 3D equipment stage ---- */
+.stage-3d{perspective:1400px; perspective-origin:55% 45%;}
+.stage-deck{position:relative; height:480px; transform-style:preserve-3d;
+  transform:rotateX(var(--rx,14deg)) rotateY(var(--ry,-20deg)) translateZ(var(--tz,0px));
+  transition:transform .5s cubic-bezier(.2,.7,.3,1);}
+.plate{position:absolute; border-radius:20px; overflow:hidden; background:#fff;
+  border:1px solid rgba(255,255,255,0.14);
+  box-shadow:0 40px 70px -20px rgba(0,0,0,0.65), 0 0 0 1px rgba(242,162,12,0.08);
+  transform-style:preserve-3d;}
+.plate img{width:100%; height:100%; object-fit:contain; padding:14px; display:block;}
+.plate figcaption{position:absolute; left:0; right:0; bottom:0; padding:9px 14px;
+  background:linear-gradient(to top, rgba(16,22,28,0.94), rgba(16,22,28,0));
+  color:#fff; font-size:12px; font-weight:600; letter-spacing:0.01em;}
+.plate-a{width:268px; height:330px; top:20px;  left:36%;  transform:translateZ(90px)  rotateY(-4deg);}
+.plate-b{width:210px; height:250px; top:206px; left:6%;   transform:translateZ(30px)  rotateY(5deg);}
+.plate-c{width:186px; height:214px; top:6px;   left:2%;   transform:translateZ(-40px) rotateY(9deg); opacity:0.92;}
+.deck-rail{position:absolute; left:-4%; right:-6%; top:296px; height:2px; border-radius:2px;
+  background:linear-gradient(90deg, transparent, rgba(242,162,12,0.55), rgba(46,123,176,0.4), transparent);
+  transform:translateZ(-90px);}
+
+/* float loop */
+@keyframes plateFloat{0%,100%{translate:0 0;}50%{translate:0 -14px;}}
+.plate-a{animation:plateFloat 6s ease-in-out infinite;}
+.plate-b{animation:plateFloat 6s ease-in-out infinite .9s;}
+.plate-c{animation:plateFloat 6s ease-in-out infinite 1.8s;}
+
+/* ---- scroll / load reveal ---- */
+.reveal{opacity:0; transform:translateY(26px); animation:revealUp .8s cubic-bezier(.22,.8,.3,1) forwards; animation-delay:var(--d,0ms);}
+@keyframes revealUp{to{opacity:1; transform:none;}}
+
+@media (prefers-reduced-motion: reduce){
+  .plate-a,.plate-b,.plate-c{animation:none;}
+  .stage-deck{transition:none;}
+  .reveal{animation:none; opacity:1; transform:none;}
+}
+
+/* ---- 3D stage: responsive scaling ---- */
+@media (max-width: 1023px){
+  .stage-3d{perspective:1000px; perspective-origin:50% 45%; margin-bottom:4px;}
+  .stage-deck{height:380px;}
+  .plate-a{width:216px; height:264px; top:14px;  left:38%;}
+  .plate-b{width:170px; height:202px; top:168px; left:5%;}
+  .plate-c{width:150px; height:172px; top:4px;   left:2%;}
+  .deck-rail{top:238px;}
+}
+@media (max-width: 640px){
+  .stage-3d{perspective:820px;}
+  .stage-deck{height:310px;}
+  .plate-a{width:170px; height:208px; top:10px;  left:40%;}
+  .plate-b{width:136px; height:162px; top:136px; left:3%;}
+  .plate-c{width:118px; height:136px; top:2px;   left:0%;}
+  .plate figcaption{font-size:11px; padding:7px 11px;}
+  .deck-rail{top:192px;}
+}
+
 </style>
 </head>
 <body class="antialiased">
@@ -149,7 +209,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
 <header id="site-nav" class="fixed top-0 left-0 w-full z-50">
   <nav class="glass mx-auto flex items-center justify-between px-6 md:px-10 py-4">
     <a href="#home" class="flex items-center gap-3">
-      <span class="w-10 h-10 rounded bg-gradient-to-br from-[var(--rv-steel)] to-[var(--rv-amber)] flex items-center justify-center font-display font-bold text-white text-lg">RV</span>
+      <span class="w-10 h-10 rounded-2xl bg-gradient-to-br from-[var(--rv-steel)] to-[var(--rv-amber)] flex items-center justify-center font-display font-bold text-white text-lg">RV</span>
       <span class="font-display text-white text-lg tracking-wide">RV EQUIPMENTS</span>
     </a>
     <div class="hidden lg:flex items-center gap-7">
@@ -181,63 +241,91 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
 </header>
 
 <!-- ============ HERO ============ -->
-<section id="home" class="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[var(--rv-graphite)]">
+<section id="home" class="relative min-h-screen flex items-center overflow-hidden bg-[var(--rv-graphite)]">
 
+  <!-- Ambient backdrop -->
   <div class="absolute inset-0">
-    <img src="https://images.unsplash.com/photo-1645736315000-6f788915923b?auto=format&fit=crop&w=1920&q=80" alt="Forklift moving pallets through an industrial warehouse" class="w-full h-full object-cover" loading="eager">
+    <img src="https://images.unsplash.com/photo-1624027492684-327af1fb7559?auto=format&fit=crop&w=2400&q=85" alt="" aria-hidden="true" class="w-full h-full object-cover opacity-25" loading="eager">
   </div>
-  <div class="absolute inset-0 bg-[var(--rv-graphite)]/80"></div>
-  <div class="absolute inset-0 bg-gradient-to-t from-[var(--rv-graphite)] via-[var(--rv-graphite)]/70 to-[var(--rv-graphite)]/50"></div>
-  <div class="absolute inset-0 blueprint-grid-dark opacity-40"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-[var(--rv-graphite)] via-[var(--rv-graphite)]/92 to-[var(--rv-graphite)]/55"></div>
+  <div class="absolute inset-0 blueprint-grid-dark opacity-30"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
 
-  <div class="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-32 pb-16 w-full text-center" data-aos="fade-up" data-aos-duration="800">
-    <div class="dim-tag mb-6 justify-center">Chromepet, Chennai — Manufacturer Since 2016</div>
-    <h1 class="font-display text-white text-4xl md:text-6xl leading-[1.05] font-semibold mb-6">
-      Industrial Lifts, Goods Lifts &amp;<br class="hidden md:block"> Hydraulic Material Handling Equipment
-    </h1>
-    <p class="text-[#C7CDD5] text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-      RV Equipments designs and manufactures hydraulic stackers, industrial trolleys, dock levelers, scissor
-      lift tables and goods elevators — built in Chennai, delivered across India, backed by a
-      <span class="text-white font-medium">GST-verified, IndiaMART TrustSEAL certified</span> workshop.
-    </p>
-    <div class="flex flex-wrap justify-center gap-4">
-      <a href="#products" class="btn-primary-rv"><i class="fa-solid fa-warehouse"></i> Explore Products</a>
-      <a href="#contact" class="btn-outline-rv"><i class="fa-regular fa-file-lines"></i> Get Best Quote</a>
-      <a href="https://wa.me/917949342379" target="_blank" class="btn-outline-rv"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pt-28 pb-20 md:py-32 w-full grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+
+    <!-- Copy column -->
+    <div class="lg:col-span-6 order-2 lg:order-1">
+      <div class="dim-tag mb-7 reveal" style="--d:0ms">Chromepet, Chennai — Manufacturer Since 2016</div>
+      <h1 class="font-display text-white text-4xl md:text-[3.4rem] leading-[1.08] font-semibold mb-6 reveal" style="--d:100ms">
+        Industrial Lifts, Goods Lifts &amp;<br class="hidden md:block">
+        <span class="text-[var(--rv-amber)]">Hydraulic Material Handling</span> Equipment
+      </h1>
+      <p class="text-[#C7CDD5] text-base md:text-lg max-w-xl mb-9 leading-relaxed reveal" style="--d:200ms">
+        RV Equipments designs and manufactures hydraulic stackers, industrial trolleys, dock levelers, scissor
+        lift tables and goods elevators — built in Chennai, delivered across India, backed by a
+        <span class="text-white font-medium">GST-verified, IndiaMART TrustSEAL certified</span> workshop.
+      </p>
+      <div class="flex flex-wrap gap-4 mb-12 reveal" style="--d:300ms">
+        <a href="#products" class="btn-primary-rv"><i class="fa-solid fa-warehouse"></i> Explore Products</a>
+        <a href="#contact" class="btn-outline-rv"><i class="fa-regular fa-file-lines"></i> Get Best Quote</a>
+        <a href="https://wa.me/917949342379" target="_blank" class="btn-outline-rv"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+      </div>
+
+      <!-- Inline stat row -->
+      <div class="flex flex-wrap gap-x-10 gap-y-5 reveal" style="--d:400ms">
+        <div>
+          <div class="font-display text-2xl md:text-3xl text-white"><span class="counter" data-target="2016">0</span></div>
+          <div class="text-xs text-[var(--rv-grey)] mt-0.5">Established</div>
+        </div>
+        <div class="w-px bg-white/10 hidden sm:block"></div>
+        <div>
+          <div class="font-display text-2xl md:text-3xl text-white"><span class="counter" data-target="25">0</span>+</div>
+          <div class="text-xs text-[var(--rv-grey)] mt-0.5">Product categories</div>
+        </div>
+        <div class="w-px bg-white/10 hidden sm:block"></div>
+        <div>
+          <div class="font-display text-2xl md:text-3xl text-white">4.2<span class="text-base text-[var(--rv-grey)]">/5</span></div>
+          <div class="text-xs text-[var(--rv-grey)] mt-0.5">13 verified reviews</div>
+        </div>
+        <div class="w-px bg-white/10 hidden sm:block"></div>
+        <div>
+          <div class="font-display text-2xl md:text-3xl text-white"><span class="counter" data-target="71">0</span>%</div>
+          <div class="text-xs text-[var(--rv-grey)] mt-0.5">Call response rate</div>
+        </div>
+      </div>
     </div>
+
+    <!-- 3D tilted equipment stack -->
+    <div class="lg:col-span-6 order-1 lg:order-2">
+      <div class="stage-3d" id="stage3d">
+        <div class="stage-deck" id="stageDeck">
+          <figure class="plate plate-a">
+            <img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339483491/IY/NR/AN/34444234/whatsapp-image-2023-08-30-at-3-42-24-pm-500x500.jpeg" alt="Wall mounted industrial lift" loading="eager">
+            <figcaption>Wall Mounted Lift</figcaption>
+          </figure>
+          <figure class="plate plate-b">
+            <img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339339251/UJ/FP/ET/34444234/1-ton-hydraulic-scissor-lift-table-500x500.jpg" alt="Hydraulic scissor lift table" loading="eager">
+            <figcaption>Scissor Lift Table</figcaption>
+          </figure>
+          <figure class="plate plate-c">
+            <img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339340900/RN/CX/VL/34444234/hydraulic-lifting-trolley-500x500.jpg" alt="Hydraulic lifting trolley" loading="eager">
+            <figcaption>Lifting Trolley</figcaption>
+          </figure>
+          <span class="deck-rail" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+
   </div>
 
-  <!-- Slim stat strip -->
-  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-10 w-full grid grid-cols-2 md:grid-cols-4 gap-4 pb-14" data-aos="fade-up" data-aos-delay="200">
-    <div class="stat-frame rounded p-5 glass">
-      <span class="stat-tag">Since</span>
-      <div class="font-display text-3xl text-white"><span class="counter" data-target="2016">0</span></div>
-      <div class="text-xs text-[var(--rv-grey)] mt-1 uppercase tracking-wide">Established</div>
-    </div>
-    <div class="stat-frame rounded p-5 glass">
-      <span class="stat-tag">Catalog</span>
-      <div class="font-display text-3xl text-white"><span class="counter" data-target="25">0</span>+</div>
-      <div class="text-xs text-[var(--rv-grey)] mt-1 uppercase tracking-wide">Product Categories</div>
-    </div>
-    <div class="stat-frame rounded p-5 glass">
-      <span class="stat-tag">Rating</span>
-      <div class="font-display text-3xl text-white">4.2<span class="text-base">/5</span></div>
-      <div class="text-xs text-[var(--rv-grey)] mt-1 uppercase tracking-wide">13 Verified Reviews</div>
-    </div>
-    <div class="stat-frame rounded p-5 glass">
-      <span class="stat-tag">Response</span>
-      <div class="font-display text-3xl text-white"><span class="counter" data-target="71">0</span>%</div>
-      <div class="text-xs text-[var(--rv-grey)] mt-1 uppercase tracking-wide">Call Response Rate</div>
-    </div>
-  </div>
-
-  <a href="#about" class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-white/60 flex flex-col items-center gap-2 text-xs font-mono uppercase tracking-widest">
+  <a href="#about" class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 text-white/55 flex flex-col items-center gap-2 text-xs">
     Scroll
-    <span class="w-5 h-9 rounded-full border border-white/30 flex items-start justify-center p-1">
+    <span class="w-5 h-9 rounded-full border border-white/25 flex items-start justify-center p-1">
       <span class="w-1 h-2 bg-[var(--rv-amber)] rounded-full animate-bounce"></span>
     </span>
   </a>
 </section>
+
 
 <!-- ============ ABOUT / COMPANY INFO ============ -->
 <section id="about" class="py-24 md:py-32 bg-[var(--rv-paper)]">
@@ -255,7 +343,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         We work directly with plant managers and procurement teams to size equipment to your load, lift height
         and floor plan — not the other way around.
       </p>
-      <div class="flex items-center gap-4 p-5 bg-white rounded-lg border border-black/5 crop-card">
+      <div class="flex items-center gap-4 p-5 bg-white rounded-2xl border border-black/5 crop-card">
         <div class="w-14 h-14 rounded-full bg-[var(--rv-steel)]/10 flex items-center justify-center">
           <i class="fa-solid fa-user-tie text-[var(--rv-steel)] text-xl"></i>
         </div>
@@ -267,38 +355,38 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
     </div>
 
     <div class="lg:col-span-7 grid sm:grid-cols-2 gap-5" data-aos="fade-left">
-      <div class="crop-card rounded-lg p-6 bg-white border border-black/5">
+      <div class="crop-card rounded-2xl p-6 bg-white border border-black/5">
         <i class="fa-solid fa-industry text-[var(--rv-amber)] text-xl mb-3"></i>
         <div class="text-xs uppercase tracking-wide text-[var(--rv-grey)] mb-1">Nature of Business</div>
         <div class="font-display text-lg">Manufacturer</div>
       </div>
-      <div class="crop-card rounded-lg p-6 bg-white border border-black/5">
+      <div class="crop-card rounded-2xl p-6 bg-white border border-black/5">
         <i class="fa-solid fa-calendar-check text-[var(--rv-amber)] text-xl mb-3"></i>
         <div class="text-xs uppercase tracking-wide text-[var(--rv-grey)] mb-1">GST Registration</div>
         <div class="font-display text-lg">01-07-2017</div>
       </div>
-      <div class="crop-card rounded-lg p-6 bg-white border border-black/5">
+      <div class="crop-card rounded-2xl p-6 bg-white border border-black/5">
         <i class="fa-solid fa-file-contract text-[var(--rv-amber)] text-xl mb-3"></i>
         <div class="text-xs uppercase tracking-wide text-[var(--rv-grey)] mb-1">Legal Status</div>
         <div class="font-display text-lg">Proprietorship</div>
       </div>
-      <div class="crop-card rounded-lg p-6 bg-white border border-black/5">
+      <div class="crop-card rounded-2xl p-6 bg-white border border-black/5">
         <i class="fa-solid fa-chart-line text-[var(--rv-amber)] text-xl mb-3"></i>
         <div class="text-xs uppercase tracking-wide text-[var(--rv-grey)] mb-1">Annual Turnover</div>
         <div class="font-display text-lg">₹0 – 40 Lakh</div>
       </div>
-      <div class="crop-card rounded-lg p-6 bg-white border border-black/5">
+      <div class="crop-card rounded-2xl p-6 bg-white border border-black/5">
         <i class="fa-solid fa-globe text-[var(--rv-amber)] text-xl mb-3"></i>
         <div class="text-xs uppercase tracking-wide text-[var(--rv-grey)] mb-1">Import Export Code</div>
         <div class="font-display text-lg font-mono">AKMPH6214P</div>
       </div>
-      <div class="crop-card rounded-lg p-6 bg-white border border-black/5">
+      <div class="crop-card rounded-2xl p-6 bg-white border border-black/5">
         <i class="fa-solid fa-receipt text-[var(--rv-amber)] text-xl mb-3"></i>
         <div class="text-xs uppercase tracking-wide text-[var(--rv-grey)] mb-1">GST No.</div>
         <div class="font-display text-base font-mono">33AKMPH6214P1ZV</div>
       </div>
-      <div class="sm:col-span-2 crop-card rounded-lg p-6 bg-[var(--rv-steel)]/5 border border-[var(--rv-steel)]/20 flex items-center gap-4">
-        <img src="https://5.imimg.com/data5/SELLER/Logo/2025/10/555749698/ZX/RM/JJ/34444234/favicon-90x90.jpg" alt="RV Equipments TrustSEAL verified badge" loading="lazy" class="w-12 h-12 rounded">
+      <div class="sm:col-span-2 crop-card rounded-2xl p-6 bg-[var(--rv-steel)]/5 border border-[var(--rv-steel)]/20 flex items-center gap-4">
+        <img src="https://5.imimg.com/data5/SELLER/Logo/2025/10/555749698/ZX/RM/JJ/34444234/favicon-90x90.jpg" alt="RV Equipments TrustSEAL verified badge" loading="lazy" class="w-12 h-12 rounded-2xl">
         <div>
           <div class="font-display">IndiaMART TrustSEAL Verified</div>
           <div class="text-xs text-[var(--rv-grey)]">GST-verified manufacturer profile, independently checked.</div>
@@ -320,7 +408,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" data-aos="fade-up" data-aos-delay="100">
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2023/8/339483491/IY/NR/AN/34444234/whatsapp-image-2023-08-30-at-3-42-24-pm-500x500.jpeg" class="glightbox h-40 w-full rounded-md overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339483491/IY/NR/AN/34444234/whatsapp-image-2023-08-30-at-3-42-24-pm-500x500.jpeg" alt="Wall Mounted Industrial Lift" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2023/8/339483491/IY/NR/AN/34444234/whatsapp-image-2023-08-30-at-3-42-24-pm-500x500.jpeg" class="glightbox h-40 w-full rounded-xl overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339483491/IY/NR/AN/34444234/whatsapp-image-2023-08-30-at-3-42-24-pm-500x500.jpeg" alt="Wall Mounted Industrial Lift" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
         <a href="https://www.rvequipments.co.in/industrial-lift.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Industrial Lift</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/industrial-lift.html#wall-mounted-industrial-lift" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Wall Mounted Industrial Lift</a></li>
@@ -330,7 +418,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2024/2/391199800/ZO/AF/QT/34444234/industrial-material-handling-lift-capacity-3-ton-250x250.png" class="glightbox h-40 w-full rounded-md overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2024/2/391199800/ZO/AF/QT/34444234/industrial-material-handling-lift-capacity-3-ton-250x250.png" alt="3 Ton Industrial Material Handling Lift" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2024/2/391199800/ZO/AF/QT/34444234/industrial-material-handling-lift-capacity-3-ton-250x250.png" class="glightbox h-40 w-full rounded-xl overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2024/2/391199800/ZO/AF/QT/34444234/industrial-material-handling-lift-capacity-3-ton-250x250.png" alt="3 Ton Industrial Material Handling Lift" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
         <a href="https://www.rvequipments.co.in/goods-lift.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Goods Lift</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/goods-lift.html#3-ton-industrial-material-handling-lift" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">3 Ton Industrial Material Handling Lift</a></li>
@@ -340,7 +428,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2023/8/339340900/RN/CX/VL/34444234/hydraulic-lifting-trolley-500x500.jpg" class="glightbox h-40 w-full rounded-md overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339340900/RN/CX/VL/34444234/hydraulic-lifting-trolley-500x500.jpg" alt="Hydraulic Lifting Trolley" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2023/8/339340900/RN/CX/VL/34444234/hydraulic-lifting-trolley-500x500.jpg" class="glightbox h-40 w-full rounded-xl overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339340900/RN/CX/VL/34444234/hydraulic-lifting-trolley-500x500.jpg" alt="Hydraulic Lifting Trolley" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
         <a href="https://www.rvequipments.co.in/hydraulic-trolley.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Hydraulic Trolley</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/hydraulic-trolley.html#hydraulic-lifting-trolley" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Hydraulic Lifting Trolley</a></li>
@@ -350,7 +438,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2024/2/391202168/MP/RR/KT/34444234/industrial-loading-ramp-capacity-10-ton-250x250.png" class="glightbox h-40 w-full rounded-md overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2024/2/391202168/MP/RR/KT/34444234/industrial-loading-ramp-capacity-10-ton-250x250.png" alt="10 Ton Industrial Loading Ramp" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2024/2/391202168/MP/RR/KT/34444234/industrial-loading-ramp-capacity-10-ton-250x250.png" class="glightbox h-40 w-full rounded-xl overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2024/2/391202168/MP/RR/KT/34444234/industrial-loading-ramp-capacity-10-ton-250x250.png" alt="10 Ton Industrial Loading Ramp" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
         <a href="https://www.rvequipments.co.in/loading-ramps.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Loading Ramps</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/loading-ramps.html#10-ton-industrial-loading-ramp" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">10 Ton Industrial Loading Ramp</a></li>
@@ -360,7 +448,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2024/2/391192587/WE/NM/MT/34444234/6-ton-dock-leveler-250x250.png" class="glightbox h-40 w-full rounded-md overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2024/2/391192587/WE/NM/MT/34444234/6-ton-dock-leveler-250x250.png" alt="6 Ton Dock Leveler" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2024/2/391192587/WE/NM/MT/34444234/6-ton-dock-leveler-250x250.png" class="glightbox h-40 w-full rounded-xl overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2024/2/391192587/WE/NM/MT/34444234/6-ton-dock-leveler-250x250.png" alt="6 Ton Dock Leveler" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
         <a href="https://www.rvequipments.co.in/hydraulic-dock-leveler.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Hydraulic Dock Leveler</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/hydraulic-dock-leveler.html#6-ton-dock-leveler" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">6 Ton Dock Leveler</a></li>
@@ -370,7 +458,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2023/8/339339251/UJ/FP/ET/34444234/1-ton-hydraulic-scissor-lift-table-500x500.jpg" class="glightbox h-40 w-full rounded-md overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339339251/UJ/FP/ET/34444234/1-ton-hydraulic-scissor-lift-table-500x500.jpg" alt="1 Ton Hydraulic Scissor Lift Table" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2023/8/339339251/UJ/FP/ET/34444234/1-ton-hydraulic-scissor-lift-table-500x500.jpg" class="glightbox h-40 w-full rounded-xl overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339339251/UJ/FP/ET/34444234/1-ton-hydraulic-scissor-lift-table-500x500.jpg" alt="1 Ton Hydraulic Scissor Lift Table" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
         <a href="https://www.rvequipments.co.in/scissor-lift-table.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Scissor Lift &amp; Table</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/scissor-lift-table.html#1-ton-hydraulic-scissor-lift-table" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">1 Ton Hydraulic Scissor Lift Table</a></li>
@@ -380,7 +468,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2025/10/555729600/CS/UR/PP/34444234/mild-steel-manual-stacker-250x250.png" class="glightbox h-40 w-full rounded-md overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2025/10/555729600/CS/UR/PP/34444234/mild-steel-manual-stacker-250x250.png" alt="Mild Steel Manual Stacker" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2025/10/555729600/CS/UR/PP/34444234/mild-steel-manual-stacker-250x250.png" class="glightbox h-40 w-full rounded-xl overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2025/10/555729600/CS/UR/PP/34444234/mild-steel-manual-stacker-250x250.png" alt="Mild Steel Manual Stacker" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
         <a href="https://www.rvequipments.co.in/manual-stacker.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Manual Stacker</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/manual-stacker.html#mild-steel-manual-stacker" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Mild Steel Manual Stacker</a></li>
@@ -390,7 +478,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-md mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-hand-holding text-5xl text-[var(--rv-steel)]"></i></div>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-xl mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-hand-holding text-5xl text-[var(--rv-steel)]"></i></div>
         <a href="https://www.rvequipments.co.in/hydraulic-hand-pallet-trucks.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Hydraulic Hand Pallet Trucks</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/hydraulic-hand-pallet-trucks.html#hydraulic-hand-pallet-truck" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Hydraulic Hand Pallet Truck</a></li>
@@ -399,7 +487,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2025/10/555824517/VQ/XO/EK/34444234/industrial-material-handling-lift-500x500.png" class="glightbox h-40 w-full rounded-md overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2025/10/555824517/VQ/XO/EK/34444234/industrial-material-handling-lift-500x500.png" alt="Industrial Material Handling Lift" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2025/10/555824517/VQ/XO/EK/34444234/industrial-material-handling-lift-500x500.png" class="glightbox h-40 w-full rounded-xl overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2025/10/555824517/VQ/XO/EK/34444234/industrial-material-handling-lift-500x500.png" alt="Industrial Material Handling Lift" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
         <a href="https://www.rvequipments.co.in/material-handling-lift.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Material Handling Lift</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/material-handling-lift.html#industrial-material-handling-lift" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Industrial Material Handling Lift</a></li>
@@ -409,7 +497,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-md mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-oil-can text-5xl text-[var(--rv-steel)]"></i></div>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-xl mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-oil-can text-5xl text-[var(--rv-steel)]"></i></div>
         <a href="https://www.rvequipments.co.in/hydraulic-drum-lifter.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Hydraulic Drum Lifter</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/hydraulic-drum-lifter.html#hydraulic-drum-lifter-cum-tilter" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Hydraulic Drum Lifter Cum Tilter</a></li>
@@ -419,7 +507,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-md mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-dolly text-5xl text-[var(--rv-steel)]"></i></div>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-xl mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-dolly text-5xl text-[var(--rv-steel)]"></i></div>
         <a href="https://www.rvequipments.co.in/drum-lifter.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Drum Lifter</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/drum-lifter.html#hydraulic-drum-lifter" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Hydraulic Drum Lifter</a></li>
@@ -429,7 +517,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-md mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-gears text-5xl text-[var(--rv-steel)]"></i></div>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-xl mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-gears text-5xl text-[var(--rv-steel)]"></i></div>
         <a href="https://www.rvequipments.co.in/hydraulic-stacker.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Hydraulic Stacker</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/hydraulic-stacker.html#mini-hand-hydraulic-stacker" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Mini Hand Hydraulic Stacker</a></li>
@@ -439,7 +527,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/BZ/OI/PR/SELLER-34444234/battery-operated-lift-table-500x500.jpg" class="glightbox h-40 w-full rounded-md overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/BZ/OI/PR/SELLER-34444234/battery-operated-lift-table-500x500.jpg" alt="Hydraulic Goods Lift" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/BZ/OI/PR/SELLER-34444234/battery-operated-lift-table-500x500.jpg" class="glightbox h-40 w-full rounded-xl overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/BZ/OI/PR/SELLER-34444234/battery-operated-lift-table-500x500.jpg" alt="Hydraulic Goods Lift" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
         <a href="https://www.rvequipments.co.in/hydraulic-goods-lift.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Hydraulic Goods Lift</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/hydraulic-goods-lift.html#1-ton-hydraulic-goods-lift" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">1 Ton Hydraulic Goods Lift</a></li>
@@ -448,7 +536,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2023/8/339338902/AK/TF/VD/34444234/hydraulic-scissor-lift-250x250.jpg" class="glightbox h-40 w-full rounded-md overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339338902/AK/TF/VD/34444234/hydraulic-scissor-lift-250x250.jpg" alt="Hydraulic Scissor Lift" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2023/8/339338902/AK/TF/VD/34444234/hydraulic-scissor-lift-250x250.jpg" class="glightbox h-40 w-full rounded-xl overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339338902/AK/TF/VD/34444234/hydraulic-scissor-lift-250x250.jpg" alt="Hydraulic Scissor Lift" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
         <a href="https://www.rvequipments.co.in/hydraulic-scissor-lift.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Hydraulic Scissor Lift</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/hydraulic-scissor-lift.html#scissor-lift-truck" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Scissor Lift Truck</a></li>
@@ -457,7 +545,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2025/8/539183585/WN/CU/TR/34444234/semi-electric-lifting-stacker-500x500.png" class="glightbox h-40 w-full rounded-md overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2025/8/539183585/WN/CU/TR/34444234/semi-electric-lifting-stacker-500x500.png" alt="Semi Electric Lifting Stacker" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2025/8/539183585/WN/CU/TR/34444234/semi-electric-lifting-stacker-500x500.png" class="glightbox h-40 w-full rounded-xl overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2025/8/539183585/WN/CU/TR/34444234/semi-electric-lifting-stacker-500x500.png" alt="Semi Electric Lifting Stacker" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
         <a href="https://www.rvequipments.co.in/semi-electric-stacker.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Semi Electric Stacker</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/semi-electric-stacker.html#semi-electric-stacker" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Semi Electric Stacker</a></li>
@@ -466,7 +554,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-md mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-battery-full text-5xl text-[var(--rv-steel)]"></i></div>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-xl mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-battery-full text-5xl text-[var(--rv-steel)]"></i></div>
         <a href="https://www.rvequipments.co.in/battery-stacker.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Battery Stacker</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/battery-stacker.html#semi-electric-lifting-stacker" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Semi Electric Lifting Stacker</a></li>
@@ -475,7 +563,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2025/10/551981288/WW/OV/JI/34444234/2-ton-hydraulic-goods-elevator-500x500.jpg" class="glightbox h-40 w-full rounded-md overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2025/10/551981288/WW/OV/JI/34444234/2-ton-hydraulic-goods-elevator-500x500.jpg" alt="2 Ton Hydraulic Goods Elevator" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2025/10/551981288/WW/OV/JI/34444234/2-ton-hydraulic-goods-elevator-500x500.jpg" class="glightbox h-40 w-full rounded-xl overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2025/10/551981288/WW/OV/JI/34444234/2-ton-hydraulic-goods-elevator-500x500.jpg" alt="2 Ton Hydraulic Goods Elevator" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
         <a href="https://www.rvequipments.co.in/freight-elevator.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Freight Elevator</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/freight-elevator.html#double-mast-hydraulic-goods-lift" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Double Mast Hydraulic Goods Lift</a></li>
@@ -484,7 +572,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2025/10/555855049/PC/UY/EP/34444234/mild-steel-electric-double-mast-stacker-500x500.png" class="glightbox h-40 w-full rounded-md overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2025/10/555855049/PC/UY/EP/34444234/mild-steel-electric-double-mast-stacker-500x500.png" alt="Mild Steel Electric Double Mast Stacker" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><a href="https://5.imimg.com/data5/SELLER/Default/2025/10/555855049/PC/UY/EP/34444234/mild-steel-electric-double-mast-stacker-500x500.png" class="glightbox h-40 w-full rounded-xl overflow-hidden mb-4 bg-white border border-black/5 flex items-center justify-center" data-gallery="rv-categories"><img src="https://5.imimg.com/data5/SELLER/Default/2025/10/555855049/PC/UY/EP/34444234/mild-steel-electric-double-mast-stacker-500x500.png" alt="Mild Steel Electric Double Mast Stacker" loading="lazy" class="w-full h-full object-contain p-3 hover:scale-105 transition duration-300"></a>
         <a href="https://www.rvequipments.co.in/electric-stacker.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Electric Stacker</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/electric-stacker.html#mild-steel-electric-double-mast-stacker" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Mild Steel Electric Double Mast Stacker</a></li>
@@ -492,7 +580,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-md mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-building text-5xl text-[var(--rv-steel)]"></i></div>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-xl mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-building text-5xl text-[var(--rv-steel)]"></i></div>
         <a href="https://www.rvequipments.co.in/wall-mounted-lifts.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Wall Mounted Lifts</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/wall-mounted-lifts.html#wall-mounted-goods-lift" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Wall Mounted Goods Lift</a></li>
@@ -500,7 +588,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-md mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-drum text-5xl text-[var(--rv-steel)]"></i></div>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-xl mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-drum text-5xl text-[var(--rv-steel)]"></i></div>
         <a href="https://www.rvequipments.co.in/drum-stacker.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Drum Stacker</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/drum-stacker.html#drum-stacker" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Drum Stacker</a></li>
@@ -508,7 +596,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-md mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-plug-circle-bolt text-5xl text-[var(--rv-steel)]"></i></div>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-xl mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-plug-circle-bolt text-5xl text-[var(--rv-steel)]"></i></div>
         <a href="https://www.rvequipments.co.in/electric-pallet-stackers.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Electric Pallet Stackers</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/electric-pallet-stackers.html#electric-pallet-stackers" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Electric Pallet Stackers</a></li>
@@ -516,7 +604,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-md mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-layer-group text-5xl text-[var(--rv-steel)]"></i></div>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-xl mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-layer-group text-5xl text-[var(--rv-steel)]"></i></div>
         <a href="https://www.rvequipments.co.in/hydraulic-hand-stacker.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Hydraulic Hand Stacker</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/hydraulic-hand-stacker.html#hydraulic-manual-hand-stacker" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Hydraulic Manual Hand Stacker</a></li>
@@ -524,7 +612,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-md mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-people-roof text-5xl text-[var(--rv-steel)]"></i></div>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-xl mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-people-roof text-5xl text-[var(--rv-steel)]"></i></div>
         <a href="https://www.rvequipments.co.in/goods-cum-passenger-elevator.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Goods Cum Passenger Elevator</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/goods-cum-passenger-elevator.html#goods-cum-passenger-elevator" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Goods Cum Passenger Elevator</a></li>
@@ -532,7 +620,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-md mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-people-carry-box text-5xl text-[var(--rv-steel)]"></i></div>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-xl mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-people-carry-box text-5xl text-[var(--rv-steel)]"></i></div>
         <a href="https://www.rvequipments.co.in/fork-stacker.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Fork Stacker</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/fork-stacker.html#manual-forklift-stacker" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Manual Forklift Stacker</a></li>
@@ -540,7 +628,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <a href="#products" class="inline-block mt-4 text-xs font-display uppercase tracking-wide text-[var(--rv-amber)] hover:underline">View All →</a>
       </div>
 
-      <div class="crop-card rounded-lg p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-md mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-table-cells text-5xl text-[var(--rv-steel)]"></i></div>
+      <div class="crop-card rounded-2xl p-6 bg-[var(--rv-paper)] border border-black/5"><div class="h-40 w-full rounded-xl mb-4 bg-[var(--rv-steel)]/5 flex items-center justify-center"><i class="fa-solid fa-table-cells text-5xl text-[var(--rv-steel)]"></i></div>
         <a href="https://www.rvequipments.co.in/platform-trolley.html" class="font-display text-lg text-[var(--rv-steel)] hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Platform Trolley</a>
         <ul class="mt-3 space-y-1.5 text-sm text-[var(--rv-graphite)]/70">
           <li><a href="https://www.rvequipments.co.in/platform-trolley.html#industrial-stainless-steel-platform-hydraulic-trolley" class="hover:text-[var(--rv-amber)]" target="_blank" rel="noopener">Industrial Stainless Steel Platform Hydraulic Trolley</a></li>
@@ -563,7 +651,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-      <div class="crop-card rounded-lg overflow-hidden bg-white border border-black/5 group" data-aos="fade-up">
+      <div class="crop-card rounded-2xl overflow-hidden bg-white border border-black/5 group" data-aos="fade-up">
         <div class="relative h-52 overflow-hidden bg-white">
           <img src="https://5.imimg.com/data5/SELLER/Default/2025/10/555824517/VQ/XO/EK/34444234/industrial-material-handling-lift-500x500.png" loading="lazy" alt="Industrial Material Handling Lift" class="w-full h-full object-contain p-4 group-hover:scale-105 transition duration-500">
         </div>
@@ -579,7 +667,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         </div>
       </div>
 
-      <div class="crop-card rounded-lg overflow-hidden bg-white border border-black/5 group" data-aos="fade-up" data-aos-delay="80">
+      <div class="crop-card rounded-2xl overflow-hidden bg-white border border-black/5 group" data-aos="fade-up" data-aos-delay="80">
         <div class="relative h-52 overflow-hidden bg-white">
           <img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339483491/IY/NR/AN/34444234/whatsapp-image-2023-08-30-at-3-42-24-pm-500x500.jpeg" loading="lazy" alt="Wall Mounted Industrial Lift" class="w-full h-full object-contain p-4 group-hover:scale-105 transition duration-500">
         </div>
@@ -595,7 +683,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         </div>
       </div>
 
-      <div class="crop-card rounded-lg overflow-hidden bg-white border border-black/5 group" data-aos="fade-up" data-aos-delay="160">
+      <div class="crop-card rounded-2xl overflow-hidden bg-white border border-black/5 group" data-aos="fade-up" data-aos-delay="160">
         <div class="relative h-52 overflow-hidden bg-white">
           <img src="https://5.imimg.com/data5/SELLER/Default/2025/10/551981288/WW/OV/JI/34444234/2-ton-hydraulic-goods-elevator-500x500.jpg" loading="lazy" alt="2 Ton Hydraulic Goods Elevator" class="w-full h-full object-contain p-4 group-hover:scale-105 transition duration-500">
         </div>
@@ -611,7 +699,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         </div>
       </div>
 
-      <div class="crop-card rounded-lg overflow-hidden bg-white border border-black/5 group" data-aos="fade-up" data-aos-delay="240">
+      <div class="crop-card rounded-2xl overflow-hidden bg-white border border-black/5 group" data-aos="fade-up" data-aos-delay="240">
         <div class="relative h-52 overflow-hidden bg-white">
           <img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339339251/UJ/FP/ET/34444234/1-ton-hydraulic-scissor-lift-table-500x500.jpg" loading="lazy" alt="1 Ton Hydraulic Scissor Lift Table" class="w-full h-full object-contain p-4 group-hover:scale-105 transition duration-500">
         </div>
@@ -627,7 +715,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         </div>
       </div>
 
-      <div class="crop-card rounded-lg overflow-hidden bg-white border border-black/5 group" data-aos="fade-up">
+      <div class="crop-card rounded-2xl overflow-hidden bg-white border border-black/5 group" data-aos="fade-up">
         <div class="relative h-52 overflow-hidden bg-white">
           <img src="https://5.imimg.com/data5/SELLER/Default/2025/10/555855049/PC/UY/EP/34444234/mild-steel-electric-double-mast-stacker-500x500.png" loading="lazy" alt="Mild Steel Electric Double Mast Stacker" class="w-full h-full object-contain p-4 group-hover:scale-105 transition duration-500">
         </div>
@@ -643,7 +731,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         </div>
       </div>
 
-      <div class="crop-card rounded-lg overflow-hidden bg-white border border-black/5 group" data-aos="fade-up" data-aos-delay="80">
+      <div class="crop-card rounded-2xl overflow-hidden bg-white border border-black/5 group" data-aos="fade-up" data-aos-delay="80">
         <div class="relative h-52 overflow-hidden bg-white">
           <img src="https://5.imimg.com/data5/BZ/OI/PR/SELLER-34444234/battery-operated-lift-table-500x500.jpg" loading="lazy" alt="Mild Steel Factory Hydraulic Goods Lift" class="w-full h-full object-contain p-4 group-hover:scale-105 transition duration-500">
         </div>
@@ -659,7 +747,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         </div>
       </div>
 
-      <div class="crop-card rounded-lg overflow-hidden bg-white border border-black/5 group" data-aos="fade-up" data-aos-delay="160">
+      <div class="crop-card rounded-2xl overflow-hidden bg-white border border-black/5 group" data-aos="fade-up" data-aos-delay="160">
         <div class="relative h-52 overflow-hidden bg-white">
           <img src="https://5.imimg.com/data5/SELLER/Default/2025/8/539183585/WN/CU/TR/34444234/semi-electric-lifting-stacker-500x500.png" loading="lazy" alt="Semi Electric Lifting Stacker" class="w-full h-full object-contain p-4 group-hover:scale-105 transition duration-500">
         </div>
@@ -675,7 +763,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         </div>
       </div>
 
-      <div class="crop-card rounded-lg overflow-hidden bg-white border border-black/5 group" data-aos="fade-up" data-aos-delay="240">
+      <div class="crop-card rounded-2xl overflow-hidden bg-white border border-black/5 group" data-aos="fade-up" data-aos-delay="240">
         <div class="relative h-52 overflow-hidden bg-white">
           <img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339340900/RN/CX/VL/34444234/hydraulic-lifting-trolley-500x500.jpg" loading="lazy" alt="Hydraulic Lifting Trolley" class="w-full h-full object-contain p-4 group-hover:scale-105 transition duration-500">
         </div>
@@ -706,22 +794,22 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
       <h2 class="font-display text-4xl md:text-5xl font-semibold">Built by the person who answers your call.</h2>
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="crop-card rounded-lg p-7 border border-black/5" data-aos="fade-up">
+      <div class="crop-card rounded-2xl p-7 border border-black/5" data-aos="fade-up">
         <i class="fa-solid fa-drafting-compass text-[var(--rv-steel)] text-2xl mb-4"></i>
         <h3 class="font-display text-lg mb-2">Sized to Your Job</h3>
         <p class="text-sm text-[var(--rv-graphite)]/70">Capacity, height and platform size engineered to your floor and load.</p>
       </div>
-      <div class="crop-card rounded-lg p-7 border border-black/5" data-aos="fade-up" data-aos-delay="80">
+      <div class="crop-card rounded-2xl p-7 border border-black/5" data-aos="fade-up" data-aos-delay="80">
         <i class="fa-solid fa-shield-halved text-[var(--rv-steel)] text-2xl mb-4"></i>
         <h3 class="font-display text-lg mb-2">GST-Verified Manufacturer</h3>
         <p class="text-sm text-[var(--rv-graphite)]/70">Registered proprietorship with IndiaMART TrustSEAL verification.</p>
       </div>
-      <div class="crop-card rounded-lg p-7 border border-black/5" data-aos="fade-up" data-aos-delay="160">
+      <div class="crop-card rounded-2xl p-7 border border-black/5" data-aos="fade-up" data-aos-delay="160">
         <i class="fa-solid fa-tags text-[var(--rv-steel)] text-2xl mb-4"></i>
         <h3 class="font-display text-lg mb-2">Transparent Pricing</h3>
         <p class="text-sm text-[var(--rv-graphite)]/70">Get a firm quote back fast — no hidden tooling or rework charges.</p>
       </div>
-      <div class="crop-card rounded-lg p-7 border border-black/5" data-aos="fade-up" data-aos-delay="240">
+      <div class="crop-card rounded-2xl p-7 border border-black/5" data-aos="fade-up" data-aos-delay="240">
         <i class="fa-solid fa-headset text-[var(--rv-steel)] text-2xl mb-4"></i>
         <h3 class="font-display text-lg mb-2">Direct Support</h3>
         <p class="text-sm text-[var(--rv-graphite)]/70">71% call response rate — you reach us, not a queue.</p>
@@ -740,19 +828,19 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
       <p class="text-[var(--rv-grey)] leading-relaxed mb-8">Our registrations are a matter of public record — check
         them yourself before you order.</p>
       <div class="grid sm:grid-cols-2 gap-4">
-        <div class="glass rounded-lg p-5">
+        <div class="glass rounded-2xl p-5">
           <div class="text-xs font-mono text-[var(--rv-steel-light)] uppercase mb-1">GST No.</div>
           <div class="text-white font-display">33AKMPH6214P1ZV</div>
         </div>
-        <div class="glass rounded-lg p-5">
+        <div class="glass rounded-2xl p-5">
           <div class="text-xs font-mono text-[var(--rv-steel-light)] uppercase mb-1">IEC Code</div>
           <div class="text-white font-display">AKMPH6214P</div>
         </div>
-        <div class="glass rounded-lg p-5">
+        <div class="glass rounded-2xl p-5">
           <div class="text-xs font-mono text-[var(--rv-steel-light)] uppercase mb-1">Established</div>
           <div class="text-white font-display">2016, Chennai</div>
         </div>
-        <div class="glass rounded-lg p-5">
+        <div class="glass rounded-2xl p-5">
           <div class="text-xs font-mono text-[var(--rv-steel-light)] uppercase mb-1">Verification</div>
           <div class="text-white font-display">TrustSEAL Verified</div>
         </div>
@@ -782,28 +870,28 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
       <h2 class="font-display text-4xl md:text-5xl font-semibold">From the workshop floor.</h2>
     </div>
     <div class="columns-2 md:columns-4 gap-4 space-y-4" data-aos="fade-up" data-aos-delay="100">
-      <a href="https://5.imimg.com/data5/SELLER/Default/2025/10/555824517/VQ/XO/EK/34444234/industrial-material-handling-lift-500x500.png" class="glightbox block rounded-lg overflow-hidden break-inside-avoid crop-card bg-white" data-gallery="rv-gallery">
+      <a href="https://5.imimg.com/data5/SELLER/Default/2025/10/555824517/VQ/XO/EK/34444234/industrial-material-handling-lift-500x500.png" class="glightbox block rounded-2xl overflow-hidden break-inside-avoid crop-card bg-white" data-gallery="rv-gallery">
         <img src="https://5.imimg.com/data5/SELLER/Default/2025/10/555824517/VQ/XO/EK/34444234/industrial-material-handling-lift-250x250.png" loading="lazy" alt="Industrial material handling lift" class="w-full hover:scale-105 transition duration-500">
       </a>
-      <a href="https://5.imimg.com/data5/SELLER/Default/2025/10/555898963/FB/FX/WN/34444234/winch-rope-industrial-lift-250x250.png" class="glightbox block rounded-lg overflow-hidden break-inside-avoid crop-card bg-white" data-gallery="rv-gallery">
+      <a href="https://5.imimg.com/data5/SELLER/Default/2025/10/555898963/FB/FX/WN/34444234/winch-rope-industrial-lift-250x250.png" class="glightbox block rounded-2xl overflow-hidden break-inside-avoid crop-card bg-white" data-gallery="rv-gallery">
         <img src="https://5.imimg.com/data5/SELLER/Default/2025/10/555898963/FB/FX/WN/34444234/winch-rope-industrial-lift-250x250.png" loading="lazy" alt="Winch rope industrial lift" class="w-full hover:scale-105 transition duration-500">
       </a>
-      <a href="https://5.imimg.com/data5/SELLER/Default/2025/10/555729600/CS/UR/PP/34444234/mild-steel-manual-stacker-250x250.png" class="glightbox block rounded-lg overflow-hidden break-inside-avoid crop-card bg-white" data-gallery="rv-gallery">
+      <a href="https://5.imimg.com/data5/SELLER/Default/2025/10/555729600/CS/UR/PP/34444234/mild-steel-manual-stacker-250x250.png" class="glightbox block rounded-2xl overflow-hidden break-inside-avoid crop-card bg-white" data-gallery="rv-gallery">
         <img src="https://5.imimg.com/data5/SELLER/Default/2025/10/555729600/CS/UR/PP/34444234/mild-steel-manual-stacker-250x250.png" loading="lazy" alt="Mild steel manual stacker" class="w-full hover:scale-105 transition duration-500">
       </a>
-      <a href="https://5.imimg.com/data5/SELLER/Default/2024/2/391192587/WE/NM/MT/34444234/6-ton-dock-leveler-250x250.png" class="glightbox block rounded-lg overflow-hidden break-inside-avoid crop-card bg-white" data-gallery="rv-gallery">
+      <a href="https://5.imimg.com/data5/SELLER/Default/2024/2/391192587/WE/NM/MT/34444234/6-ton-dock-leveler-250x250.png" class="glightbox block rounded-2xl overflow-hidden break-inside-avoid crop-card bg-white" data-gallery="rv-gallery">
         <img src="https://5.imimg.com/data5/SELLER/Default/2024/2/391192587/WE/NM/MT/34444234/6-ton-dock-leveler-250x250.png" loading="lazy" alt="6 ton dock leveler" class="w-full hover:scale-105 transition duration-500">
       </a>
-      <a href="https://5.imimg.com/data5/SELLER/Default/2024/2/391202168/MP/RR/KT/34444234/industrial-loading-ramp-capacity-10-ton-250x250.png" class="glightbox block rounded-lg overflow-hidden break-inside-avoid crop-card bg-white" data-gallery="rv-gallery">
+      <a href="https://5.imimg.com/data5/SELLER/Default/2024/2/391202168/MP/RR/KT/34444234/industrial-loading-ramp-capacity-10-ton-250x250.png" class="glightbox block rounded-2xl overflow-hidden break-inside-avoid crop-card bg-white" data-gallery="rv-gallery">
         <img src="https://5.imimg.com/data5/SELLER/Default/2024/2/391202168/MP/RR/KT/34444234/industrial-loading-ramp-capacity-10-ton-250x250.png" loading="lazy" alt="10 ton industrial loading ramp" class="w-full hover:scale-105 transition duration-500">
       </a>
-      <a href="https://5.imimg.com/data5/SELLER/Default/2023/8/339338902/AK/TF/VD/34444234/hydraulic-scissor-lift-250x250.jpg" class="glightbox block rounded-lg overflow-hidden break-inside-avoid crop-card bg-white" data-gallery="rv-gallery">
+      <a href="https://5.imimg.com/data5/SELLER/Default/2023/8/339338902/AK/TF/VD/34444234/hydraulic-scissor-lift-250x250.jpg" class="glightbox block rounded-2xl overflow-hidden break-inside-avoid crop-card bg-white" data-gallery="rv-gallery">
         <img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339338902/AK/TF/VD/34444234/hydraulic-scissor-lift-250x250.jpg" loading="lazy" alt="Hydraulic scissor lift" class="w-full hover:scale-105 transition duration-500">
       </a>
-      <a href="https://5.imimg.com/data5/SELLER/Default/2025/10/555855049/PC/UY/EP/34444234/mild-steel-electric-double-mast-stacker-250x250.png" class="glightbox block rounded-lg overflow-hidden break-inside-avoid crop-card bg-white" data-gallery="rv-gallery">
+      <a href="https://5.imimg.com/data5/SELLER/Default/2025/10/555855049/PC/UY/EP/34444234/mild-steel-electric-double-mast-stacker-250x250.png" class="glightbox block rounded-2xl overflow-hidden break-inside-avoid crop-card bg-white" data-gallery="rv-gallery">
         <img src="https://5.imimg.com/data5/SELLER/Default/2025/10/555855049/PC/UY/EP/34444234/mild-steel-electric-double-mast-stacker-250x250.png" loading="lazy" alt="Electric double mast stacker" class="w-full hover:scale-105 transition duration-500">
       </a>
-      <a href="https://5.imimg.com/data5/SELLER/Default/2023/8/339340900/RN/CX/VL/34444234/hydraulic-lifting-trolley-250x250.jpg" class="glightbox block rounded-lg overflow-hidden break-inside-avoid crop-card bg-white" data-gallery="rv-gallery">
+      <a href="https://5.imimg.com/data5/SELLER/Default/2023/8/339340900/RN/CX/VL/34444234/hydraulic-lifting-trolley-250x250.jpg" class="glightbox block rounded-2xl overflow-hidden break-inside-avoid crop-card bg-white" data-gallery="rv-gallery">
         <img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339340900/RN/CX/VL/34444234/hydraulic-lifting-trolley-250x250.jpg" loading="lazy" alt="Hydraulic lifting trolley" class="w-full hover:scale-105 transition duration-500">
       </a>
     </div>
@@ -818,7 +906,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
       <h2 class="font-display text-4xl md:text-5xl font-semibold">Before you call, a few answers.</h2>
     </div>
     <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
-      <details class="accordion-item crop-card bg-[var(--rv-paper)] border border-black/5 rounded-lg p-6" open>
+      <details class="accordion-item crop-card bg-[var(--rv-paper)] border border-black/5 rounded-2xl p-6" open>
         <summary class="flex items-center justify-between cursor-pointer font-display text-lg">
           Can you build a lift or stacker to a custom capacity?
           <i class="fa-solid fa-chevron-down text-[var(--rv-amber)] transition-transform"></i>
@@ -827,7 +915,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
           platform size shown on each listing are our standard configurations — most orders are adjusted to the
           client's actual load and floor plan.</p>
       </details>
-      <details class="accordion-item crop-card bg-[var(--rv-paper)] border border-black/5 rounded-lg p-6">
+      <details class="accordion-item crop-card bg-[var(--rv-paper)] border border-black/5 rounded-2xl p-6">
         <summary class="flex items-center justify-between cursor-pointer font-display text-lg">
           What warranty applies to your equipment?
           <i class="fa-solid fa-chevron-down text-[var(--rv-amber)] transition-transform"></i>
@@ -835,7 +923,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <p class="text-sm text-[var(--rv-graphite)]/70 mt-4 leading-relaxed">Most products carry a 12-month
           manufacturing warranty, as listed against each item's specification.</p>
       </details>
-      <details class="accordion-item crop-card bg-[var(--rv-paper)] border border-black/5 rounded-lg p-6">
+      <details class="accordion-item crop-card bg-[var(--rv-paper)] border border-black/5 rounded-2xl p-6">
         <summary class="flex items-center justify-between cursor-pointer font-display text-lg">
           Do you deliver outside Chennai?
           <i class="fa-solid fa-chevron-down text-[var(--rv-amber)] transition-transform"></i>
@@ -843,7 +931,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
         <p class="text-sm text-[var(--rv-graphite)]/70 mt-4 leading-relaxed">Yes, we dispatch across Tamil Nadu and
           to clients across India. Share your pin code for a freight estimate with your quote.</p>
       </details>
-      <details class="accordion-item crop-card bg-[var(--rv-paper)] border border-black/5 rounded-lg p-6">
+      <details class="accordion-item crop-card bg-[var(--rv-paper)] border border-black/5 rounded-2xl p-6">
         <summary class="flex items-center justify-between cursor-pointer font-display text-lg">
           How fast do you respond to an enquiry?
           <i class="fa-solid fa-chevron-down text-[var(--rv-amber)] transition-transform"></i>
@@ -865,19 +953,19 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
     </div>
 
     <div class="grid lg:grid-cols-12 gap-10">
-      <div class="lg:col-span-7 glass rounded-lg p-8 md:p-10" data-aos="fade-right">
+      <div class="lg:col-span-7 glass rounded-2xl p-8 md:p-10" data-aos="fade-right">
         <form id="enquiry-form" class="grid sm:grid-cols-2 gap-6" onsubmit="sendEnquiryToWhatsApp(event)">
           <div class="sm:col-span-1">
             <label class="text-xs font-mono uppercase tracking-wide text-[var(--rv-grey)] block mb-2">Full Name</label>
-            <input id="enq-name" type="text" required class="w-full bg-white/5 border border-white/15 rounded px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--rv-amber)]" placeholder="Your name">
+            <input id="enq-name" type="text" required class="w-full bg-white/5 border border-white/15 rounded-2xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--rv-amber)]" placeholder="Your name">
           </div>
           <div class="sm:col-span-1">
             <label class="text-xs font-mono uppercase tracking-wide text-[var(--rv-grey)] block mb-2">Phone</label>
-            <input id="enq-phone" type="tel" required class="w-full bg-white/5 border border-white/15 rounded px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--rv-amber)]" placeholder="+91 00000 00000">
+            <input id="enq-phone" type="tel" required class="w-full bg-white/5 border border-white/15 rounded-2xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--rv-amber)]" placeholder="+91 00000 00000">
           </div>
           <div class="sm:col-span-2">
             <label class="text-xs font-mono uppercase tracking-wide text-[var(--rv-grey)] block mb-2">Item Required</label>
-            <select id="enq-item" class="w-full bg-white/5 border border-white/15 rounded px-4 py-3 text-white focus:outline-none focus:border-[var(--rv-amber)]">
+            <select id="enq-item" class="w-full bg-white/5 border border-white/15 rounded-2xl px-4 py-3 text-white focus:outline-none focus:border-[var(--rv-amber)]">
               <option class="text-black">Industrial Lift</option>
               <option class="text-black">Goods Lift</option>
               <option class="text-black">Hydraulic Trolley</option>
@@ -890,7 +978,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
           </div>
           <div class="sm:col-span-2">
             <label class="text-xs font-mono uppercase tracking-wide text-[var(--rv-grey)] block mb-2">Describe Your Requirement</label>
-            <textarea id="enq-details" rows="4" required class="w-full bg-white/5 border border-white/15 rounded px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--rv-amber)]" placeholder="Capacity, lift height, quantity, delivery location"></textarea>
+            <textarea id="enq-details" rows="4" required class="w-full bg-white/5 border border-white/15 rounded-2xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--rv-amber)]" placeholder="Capacity, lift height, quantity, delivery location"></textarea>
           </div>
           <div class="sm:col-span-2">
             <button type="submit" class="btn-whatsapp-rv w-full sm:w-auto justify-center"><i class="fa-brands fa-whatsapp text-lg"></i> Send Enquiry on WhatsApp</button>
@@ -899,12 +987,12 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
       </div>
 
       <div class="lg:col-span-5 flex flex-col gap-6" data-aos="fade-left">
-        <div class="glass rounded-lg p-7">
+        <div class="glass rounded-2xl p-7">
           <h4 class="font-display text-white text-lg mb-4 flex items-center gap-3"><i class="fa-solid fa-location-dot text-[var(--rv-amber)]"></i> Address</h4>
           <p class="text-sm text-[var(--rv-grey)] leading-relaxed">RV Equipments — R. Harikrishnan (Proprietor)<br>
             No 18, Ranganathan Street, Chromepet, Chennai – 600044, Tamil Nadu, India</p>
         </div>
-        <div class="glass rounded-lg p-7 flex flex-col gap-3">
+        <div class="glass rounded-2xl p-7 flex flex-col gap-3">
           <a href="tel:+917949342379" class="flex items-center gap-3 text-sm text-white hover:text-[var(--rv-amber)]"><i class="fa-solid fa-phone text-[var(--rv-amber)]"></i> 079 4934 2379</a>
           <a href="https://wa.me/917949342379" target="_blank" class="flex items-center gap-3 text-sm text-white hover:text-[var(--rv-amber)]"><i class="fa-brands fa-whatsapp text-[var(--rv-amber)]"></i> WhatsApp Us</a>
           <div class="flex items-center gap-3 pt-2">
@@ -913,14 +1001,14 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
             <a href="https://www.linkedin.com/cws/share?url=https://www.rvequipments.co.in/" target="_blank" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10"><i class="fa-brands fa-linkedin-in"></i></a>
           </div>
         </div>
-        <div class="glass rounded-lg p-7">
+        <div class="glass rounded-2xl p-7">
           <div class="text-xs font-mono text-[var(--rv-steel-light)] uppercase mb-1">Response Rate</div>
           <div class="text-white font-display text-2xl">71%</div>
         </div>
       </div>
     </div>
 
-    <div class="mt-10 rounded-lg overflow-hidden crop-card" data-aos="fade-up">
+    <div class="mt-10 rounded-2xl overflow-hidden crop-card" data-aos="fade-up">
       <iframe
         src="https://www.google.com/maps?q=12.949525,80.15911&output=embed"
         width="100%" height="360" style="border:0;" allowfullscreen loading="lazy"
@@ -935,7 +1023,7 @@ h1,h2,h3,h4,.font-display{font-family:var(--font-display); letter-spacing:0.01em
   <div class="max-w-7xl mx-auto px-6 md:px-10 grid md:grid-cols-4 gap-10 mb-12">
     <div>
       <div class="flex items-center gap-3 mb-4">
-        <span class="w-10 h-10 rounded bg-gradient-to-br from-[var(--rv-steel)] to-[var(--rv-amber)] flex items-center justify-center font-display font-bold text-white text-lg">RV</span>
+        <span class="w-10 h-10 rounded-2xl bg-gradient-to-br from-[var(--rv-steel)] to-[var(--rv-amber)] flex items-center justify-center font-display font-bold text-white text-lg">RV</span>
         <span class="font-display text-white text-lg tracking-wide">RV EQUIPMENTS</span>
       </div>
       <p class="text-sm text-[var(--rv-grey)] leading-relaxed">Manufacturer of Hydraulic Stackers, Industrial
@@ -992,6 +1080,51 @@ window.addEventListener('load', () => {
 });
 
 AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' });
+
+// ---- Hero 3D stage: reacts to scroll depth and pointer position ----
+(function () {
+  const stage = document.getElementById('stage3d');
+  const deck  = document.getElementById('stageDeck');
+  const hero  = document.getElementById('home');
+  if (!stage || !deck || !hero) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const isTouch = window.matchMedia('(hover: none)').matches;
+  let scrollRX = 14, scrollTZ = 0, scrollRY = -20, pointerRY = -20, ticking = false;
+
+  function apply() {
+    deck.style.setProperty('--rx', scrollRX.toFixed(2) + 'deg');
+    deck.style.setProperty('--ry', (isTouch ? scrollRY : pointerRY).toFixed(2) + 'deg');
+    deck.style.setProperty('--tz', scrollTZ.toFixed(1) + 'px');
+    ticking = false;
+  }
+  function request() { if (!ticking) { ticking = true; requestAnimationFrame(apply); } }
+
+  // Scroll drives the tilt. Progress is measured against the hero's own
+  // travel through the viewport, so it works on any screen height.
+  function onScroll() {
+    const r = hero.getBoundingClientRect();
+    const p = Math.min(1, Math.max(0, -r.top / (r.height || 1)));
+    scrollRX = 14 + p * 16;   // 14deg -> 30deg, stack lays back
+    scrollTZ = p * -140;      // recedes into the distance
+    if (isTouch) scrollRY = -20 + p * 30;  // no mouse: scroll also swings Y
+    request();
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  onScroll();
+
+  // Pointer parallax (desktop only)
+  if (!isTouch) {
+    stage.addEventListener('mousemove', (e) => {
+      const r = stage.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      pointerRY = -20 + x * 26;
+      request();
+    });
+    stage.addEventListener('mouseleave', () => { pointerRY = -20; request(); });
+  }
+})();
 
 if (window.GLightbox) { GLightbox({ selector: '.glightbox' }); }
 
