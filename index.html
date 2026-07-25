@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RV Equipments | Industrial Lift &amp; Material Manufacturer, Chennai</title>
+<title>RV Equipments | Industrial Lift &amp; Material Handling Manufacturer, Chennai</title>
 <meta name="description" content="RV Equipments manufactures industrial lifts, goods lifts, hydraulic stackers, trolleys, dock levelers and scissor lift tables in Chromepet, Chennai. GST-verified, TrustSEAL certified, serving industry across India since 2016.">
 <meta name="keywords" content="industrial lift manufacturer Chennai, goods lift, hydraulic stacker, scissor lift table, dock leveler, hydraulic trolley, material handling equipment India">
 <link rel="canonical" href="https://www.rvequipments.co.in/">
@@ -201,7 +201,7 @@ details.faq[open] .chev{transform:rotate(180deg);}
         <span class="w-11 h-11 rounded-xl bg-white/12 border border-white/25 flex items-center justify-center text-white f-head text-base shadow-inner">RV</span>
         <span>
           <span class="brand-name block f-head text-white text-[17px] leading-tight tracking-wide">RV EQUIPMENTS</span>
-          <span class="brand-sub block text-[11px] text-white/70 leading-tight">Manufacturer · Chennai</span>
+          <span class="brand-sub block text-[11px] text-white/70 leading-tight">Material Handling · Chennai</span>
         </span>
       </a>
 
@@ -256,7 +256,7 @@ details.faq[open] .chev{transform:rotate(180deg);}
 
     <!-- Copy -->
     <div>
-      <div class="eyebrow mb-6" data-aos="fade-up">Manufacturer since 2016 </div>
+      <div class="eyebrow mb-6" data-aos="fade-up">Manufacturer since 2016 — Chromepet, Chennai</div>
       <h1 class="h-display text-[var(--ink)] mb-6" data-aos="fade-up" data-aos-delay="80">
         Precision Material Handling for
         <span class="relative inline-block text-[var(--blue)]">Indian Industry
@@ -1002,21 +1002,37 @@ details.faq[open] .chev{transform:rotate(180deg);}
 <script>
 window.addEventListener('load', () => {
   const l = document.getElementById('loader');
-  setTimeout(() => { l.style.opacity = '0'; l.style.visibility = 'hidden'; }, 350);
+  if (l) setTimeout(() => { l.style.opacity = '0'; l.style.visibility = 'hidden'; }, 350);
 });
 
-AOS.init({ once: true, duration: 700, offset: 80, easing: 'ease-out-cubic' });
+// AOS — guard in case the CDN failed to load
+if (window.AOS) {
+  AOS.init({ once: true, duration: 700, offset: 80, easing: 'ease-out-cubic' });
+} else {
+  // reveal any content that was waiting on AOS animations
+  document.querySelectorAll('[data-aos]').forEach(el => el.classList.add('aos-animate'));
+}
 
-if (window.GLightbox) GLightbox({ selector: '.glightbox' });
+// GLightbox — guard
+if (window.GLightbox) {
+  try { GLightbox({ selector: '.glightbox' }); } catch (e) { console.warn('GLightbox init skipped:', e); }
+}
 
-new Swiper('.tswiper', {
-  slidesPerView: 1,
-  spaceBetween: 24,
-  loop: true,
-  autoplay: { delay: 5200, disableOnInteraction: false },
-  pagination: { el: '.swiper-pagination', clickable: true },
-  breakpoints: { 768: { slidesPerView: 2 } }
-});
+// Swiper — guard so a missing library never halts the rest of the script
+if (window.Swiper) {
+  try {
+    new Swiper('.tswiper', {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      loop: true,
+      autoplay: { delay: 5200, disableOnInteraction: false },
+      pagination: { el: '.swiper-pagination', clickable: true },
+      breakpoints: { 768: { slidesPerView: 2 } }
+    });
+  } catch (e) { console.warn('Swiper init skipped:', e); }
+} else {
+  console.warn('Swiper library not loaded — testimonials will not auto-slide.');
+}
 
 // animated counters
 const counters = document.querySelectorAll('.count');
@@ -1065,15 +1081,17 @@ toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smoot
 // mobile nav
 const burger = document.getElementById('burger');
 const mobnav = document.getElementById('mobnav');
-burger.addEventListener('click', () => {
-  mobnav.classList.toggle('hidden');
-  burger.innerHTML = mobnav.classList.contains('hidden')
-    ? '<i class="fa-solid fa-bars"></i>' : '<i class="fa-solid fa-xmark"></i>';
-});
-mobnav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  mobnav.classList.add('hidden');
-  burger.innerHTML = '<i class="fa-solid fa-bars"></i>';
-}));
+if (burger && mobnav) {
+  burger.addEventListener('click', () => {
+    mobnav.classList.toggle('hidden');
+    burger.innerHTML = mobnav.classList.contains('hidden')
+      ? '<i class="fa-solid fa-bars"></i>' : '<i class="fa-solid fa-xmark"></i>';
+  });
+  mobnav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobnav.classList.add('hidden');
+    burger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+  }));
+}
 
 // quote form -> WhatsApp
 function sendToWhatsApp(e) {
