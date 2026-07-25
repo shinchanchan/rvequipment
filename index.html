@@ -50,8 +50,9 @@
   --f-body:'Inter', sans-serif;
   --f-num:'Space Grotesk', sans-serif;
 }
+html{overflow-x:hidden;}
 *{scroll-behavior:smooth;}
-body{font-family:var(--f-body); background:#fff; color:var(--ink); overflow-x:hidden;}
+body{font-family:var(--f-body); background:#fff; color:var(--ink); overflow-x:hidden; width:100%; max-width:100%; position:relative;}
 h1,h2,h3,h4,h5,.f-head{font-family:var(--f-head); font-weight:700; letter-spacing:-0.01em;}
 .f-num{font-family:var(--f-num); font-weight:600; font-variant-numeric:tabular-nums;}
 
@@ -134,25 +135,41 @@ h1,h2,h3,h4,h5,.f-head{font-family:var(--f-head); font-weight:700; letter-spacin
 }
 
 
-/* nav */
-#nav{background:linear-gradient(100deg, #0B2027 0%, #0E4C4A 55%, #0E7C7B 130%);
-  box-shadow:0 1px 0 rgba(255,255,255,0.08), 0 4px 24px rgba(11,32,39,0.28);
-  border-bottom:2px solid var(--orange);
-  transition:background .3s ease, box-shadow .3s ease, backdrop-filter .3s ease, border-color .3s ease;}
-#nav.solid{background:rgba(255,255,255,0.97); backdrop-filter:blur(12px); border-bottom-color:var(--line);
-  box-shadow:0 1px 0 var(--line), 0 6px 24px rgba(11,32,39,0.10);}
-.nlink{font-size:14.5px; font-weight:500; color:#E2E8F0; position:relative; padding:6px 0; white-space:nowrap; transition:color .3s ease;}
+/* nav — static solid color, same at top and on scroll */
+#nav{background:#0B2027;
+  box-shadow:0 4px 20px rgba(11,32,39,0.28);
+  border-bottom:2px solid var(--orange);}
+#nav.solid{background:#0B2027; box-shadow:0 4px 24px rgba(11,32,39,0.35);}
+.nlink{font-size:14.5px; font-weight:500; color:#E2E8F0; position:relative; padding:6px 0; white-space:nowrap; transition:color .2s ease;}
 .nlink::after{content:""; position:absolute; left:0; bottom:0; height:2px; width:0; border-radius:2px; background:var(--orange); transition:width .25s ease;}
 .nlink:hover::after,.nlink.active::after{width:100%;}
-.brand-name,.nav-phone,#burger{transition:color .3s ease;}
+.nlink:hover,.nlink.active{color:#fff;}
 
-/* Scrolled state — !important needed to override Tailwind's text-white utility */
-#nav.solid .nlink{color:#334155 !important;}
-#nav.solid .nlink:hover,#nav.solid .nlink.active{color:var(--navy) !important;}
-#nav.solid .brand-name{color:var(--navy) !important;}
-#nav.solid .nav-phone{color:var(--navy) !important;}
-#nav.solid #burger{color:var(--navy) !important;}
-#nav.solid .brand-sub{color:var(--muted) !important;}
+/* text stays white in both states */
+#nav.solid .nlink{color:#E2E8F0 !important;}
+#nav.solid .nlink:hover,#nav.solid .nlink.active{color:#fff !important;}
+#nav.solid .brand-name{color:#fff !important;}
+#nav.solid .nav-phone{color:#fff !important;}
+#nav.solid #burger{color:#fff !important; border-color:rgba(255,255,255,0.25); background:#0E3C3A;}
+#nav.solid .brand-sub{color:rgba(255,255,255,0.7) !important;}
+
+/* mobile drawer */
+#mobnav{position:absolute; top:70px; left:0; width:100%;
+  overflow:hidden; max-height:0; opacity:0; visibility:hidden;
+  background:#fff; border-top:1px solid transparent;
+  box-shadow:0 18px 40px rgba(11,32,39,0.16);
+  transition:max-height .34s cubic-bezier(.4,0,.2,1), opacity .25s ease, visibility 0s linear .34s, border-color .3s ease;}
+#mobnav.open{max-height:min(80vh, 620px); opacity:1; visibility:visible; overflow-y:auto;
+  border-top-color:var(--line); transition:max-height .34s cubic-bezier(.4,0,.2,1), opacity .25s ease, visibility 0s, border-color .3s ease;}
+@media(min-width:768px){ #mobnav{top:74px;} }
+.mobnav-inner{display:flex; flex-direction:column; padding:6px 0 16px;}
+.mob-link{padding:11px 22px; font-size:15px; font-weight:500; color:#1F2E2C; border-bottom:1px solid #F0F4F3;
+  display:flex; align-items:center; justify-content:space-between; transition:background .15s ease, color .15s ease;}
+.mob-link:active,.mob-link:hover{background:var(--bg); color:var(--blue);}
+.mob-act{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+  padding:11px 6px; border-radius:12px; font-family:var(--f-head); font-weight:600; font-size:12.5px; text-align:center;}
+.mob-act i{font-size:15px;}
+#burger{transition:background .2s ease, border-color .2s ease;}
 
 /* process timeline */
 .timeline{position:relative;}
@@ -176,9 +193,10 @@ details.faq[open] .chev{transform:rotate(180deg);}
   transition:opacity .5s ease, visibility .5s ease;}
 .spin{width:54px; height:54px; border:3px solid rgba(255,255,255,0.18); border-top-color:var(--orange); border-radius:50%; animation:sp .9s linear infinite;}
 @keyframes sp{to{transform:rotate(360deg);}}
-.fbtn{width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff;
-  box-shadow:0 10px 24px rgba(15,23,42,0.22); transition:transform .2s ease;}
+.fbtn{width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff;
+  box-shadow:0 10px 24px rgba(11,32,39,0.28); transition:transform .2s ease;}
 .fbtn:hover{transform:scale(1.08);}
+@media(max-width:640px){ .fbtn{width:46px; height:46px;} }
 @keyframes pulseWa{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.55);}50%{box-shadow:0 0 0 12px rgba(37,211,102,0);}}
 .wa-pulse{animation:pulseWa 1.9s ease-in-out infinite;}
 ::-webkit-scrollbar{width:10px;}
@@ -196,16 +214,16 @@ details.faq[open] .chev{transform:rotate(180deg);}
 <!-- ================= NAV ================= -->
 <header id="nav" class="fixed top-0 left-0 w-full z-50">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
-    <div class="flex items-center justify-between h-[74px]">
-      <a href="#home" class="flex items-center gap-3 shrink-0">
-        <span class="w-11 h-11 rounded-xl bg-white/12 border border-white/25 flex items-center justify-center text-white f-head text-base shadow-inner">RV</span>
-        <span>
-          <span class="brand-name block f-head text-white text-[17px] leading-tight tracking-wide">RV EQUIPMENTS</span>
-          <span class="brand-sub block text-[11px] text-white/70 leading-tight">Material Handling · Chennai</span>
+    <div class="flex items-center justify-between h-[70px] md:h-[74px]">
+      <a href="#home" class="flex items-center gap-2.5 shrink-0">
+        <span class="w-10 h-10 md:w-11 md:h-11 rounded-xl bg-white/12 border border-white/25 flex items-center justify-center text-white f-head text-[15px] shadow-inner">RV</span>
+        <span class="leading-tight">
+          <span class="brand-name block f-head text-white text-[15px] md:text-[17px] leading-tight tracking-wide">RV EQUIPMENTS</span>
+          <span class="brand-sub block text-[10.5px] md:text-[11px] text-white/70 leading-tight">Material Manufacturer</span>
         </span>
       </a>
 
-      <nav class="hidden xl:flex items-center gap-6">
+      <nav class="hidden lg:flex items-center gap-5 xl:gap-6">
         <a href="#home" class="nlink active">Home</a>
         <a href="#about" class="nlink">About</a>
         <a href="#products" class="nlink">Products</a>
@@ -216,30 +234,35 @@ details.faq[open] .chev{transform:rotate(180deg);}
         <a href="#contact" class="nlink">Contact</a>
       </nav>
 
-      <div class="hidden lg:flex items-center gap-4">
-        <a href="tel:+917949342379" class="nav-phone text-white text-sm font-semibold flex items-center gap-2">
+      <div class="hidden lg:flex items-center gap-3 xl:gap-4">
+        <a href="tel:+917949342379" class="nav-phone hidden xl:flex text-white text-sm font-semibold items-center gap-2">
           <i class="fa-solid fa-phone text-[var(--orange)]"></i> 079 4934 2379
         </a>
         <a href="#contact" class="btn-solid !py-2.5 !px-5 !text-sm">Get a Quote</a>
       </div>
 
-      <button id="burger" class="xl:hidden text-white text-2xl w-10 h-10 flex items-center justify-center" aria-label="Menu">
-        <i class="fa-solid fa-bars"></i>
+      <button id="burger" class="lg:hidden text-white w-11 h-11 flex items-center justify-center rounded-xl border border-white/25" style="background:#0E3C3A;" aria-label="Open menu" aria-expanded="false" aria-controls="mobnav">
+        <i class="fa-solid fa-bars text-xl"></i>
       </button>
     </div>
   </div>
 
-  <div id="mobnav" class="xl:hidden hidden bg-white border-t border-[var(--line)] shadow-lg">
-    <div class="px-5 py-4 flex flex-col gap-1">
-      <a href="#home" class="py-2.5 text-[15px] font-medium text-slate-700">Home</a>
-      <a href="#about" class="py-2.5 text-[15px] font-medium text-slate-700">About</a>
-      <a href="#products" class="py-2.5 text-[15px] font-medium text-slate-700">Products</a>
-      <a href="#industries" class="py-2.5 text-[15px] font-medium text-slate-700">Industries</a>
-      <a href="#process" class="py-2.5 text-[15px] font-medium text-slate-700">Manufacturing Process</a>
-      <a href="#quality" class="py-2.5 text-[15px] font-medium text-slate-700">Quality</a>
-      <a href="#gallery" class="py-2.5 text-[15px] font-medium text-slate-700">Gallery</a>
-      <a href="#contact" class="py-2.5 text-[15px] font-medium text-slate-700">Contact</a>
-      <a href="#contact" class="btn-solid justify-center mt-3">Get a Quote</a>
+  <!-- mobile drawer -->
+  <div id="mobnav" class="lg:hidden">
+    <div class="mobnav-inner">
+      <a href="#home" class="mob-link">Home</a>
+      <a href="#about" class="mob-link">About</a>
+      <a href="#products" class="mob-link">Products</a>
+      <a href="#industries" class="mob-link">Industries</a>
+      <a href="#process" class="mob-link">Manufacturing Process</a>
+      <a href="#quality" class="mob-link">Quality</a>
+      <a href="#gallery" class="mob-link">Gallery</a>
+      <a href="#contact" class="mob-link">Contact</a>
+      <div class="grid grid-cols-3 gap-2.5 px-4 pt-4">
+        <a href="tel:+917949342379" class="mob-act border border-[var(--line)] text-[var(--ink)]"><i class="fa-solid fa-phone text-[var(--blue)]"></i> Call</a>
+        <a href="https://wa.me/917949342379" target="_blank" rel="noopener" class="mob-act bg-[#25D366] text-[#062b16]"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+        <a href="#contact" class="mob-act bg-[var(--orange)] text-[#3D2600]"><i class="fa-regular fa-file-lines"></i> Quote</a>
+      </div>
     </div>
   </div>
 </header>
@@ -256,7 +279,7 @@ details.faq[open] .chev{transform:rotate(180deg);}
 
     <!-- Copy -->
     <div>
-      <div class="eyebrow mb-6" data-aos="fade-up">Manufacturer since 2016 — Chromepet, Chennai</div>
+      <div class="eyebrow mb-6" data-aos="fade-up">Manufacturer since 2016 </div>
       <h1 class="h-display text-[var(--ink)] mb-6" data-aos="fade-up" data-aos-delay="80">
         Precision Material Handling for
         <span class="relative inline-block text-[var(--blue)]">Indian Industry
@@ -293,7 +316,7 @@ details.faq[open] .chev{transform:rotate(180deg);}
       </div>
 
       <!-- floating card: rating -->
-      <div class="absolute -left-4 md:-left-6 bottom-8 bg-white rounded-2xl shadow-xl border border-[var(--line)] px-5 py-4 flex items-center gap-3">
+      <div class="absolute left-2 md:-left-6 bottom-6 md:bottom-8 bg-white rounded-2xl shadow-xl border border-[var(--line)] px-4 md:px-5 py-3 md:py-4 flex items-center gap-3">
         <div class="w-11 h-11 rounded-xl bg-[var(--orange)]/15 flex items-center justify-center">
           <i class="fa-solid fa-star text-[var(--orange)]"></i>
         </div>
@@ -304,7 +327,7 @@ details.faq[open] .chev{transform:rotate(180deg);}
       </div>
 
       <!-- floating card: categories -->
-      <div class="absolute -right-3 md:-right-5 top-8 bg-white rounded-2xl shadow-xl border border-[var(--line)] px-5 py-4 flex items-center gap-3">
+      <div class="absolute right-2 md:-right-5 top-6 md:top-8 bg-white rounded-2xl shadow-xl border border-[var(--line)] px-4 md:px-5 py-3 md:py-4 flex items-center gap-3">
         <div class="w-11 h-11 rounded-xl bg-[var(--blue)]/12 flex items-center justify-center">
           <i class="fa-solid fa-layer-group text-[var(--blue)]"></i>
         </div>
@@ -990,7 +1013,7 @@ details.faq[open] .chev{transform:rotate(180deg);}
 </footer>
 
 <!-- floating actions -->
-<div class="fixed bottom-6 right-5 z-50 flex flex-col items-end gap-3">
+<div class="fixed bottom-4 right-3 sm:bottom-6 sm:right-5 z-50 flex flex-col items-end gap-2.5">
   <button id="toTop" class="fbtn bg-white !text-[var(--navy)] border border-[var(--line)] opacity-0 pointer-events-none" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
   <a href="tel:+917949342379" class="fbtn bg-[var(--blue)]" aria-label="Call us"><i class="fa-solid fa-phone"></i></a>
   <a href="https://wa.me/917949342379" target="_blank" rel="noopener" class="fbtn wa-pulse bg-[#25D366]" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp text-2xl"></i></a>
@@ -1082,15 +1105,17 @@ toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smoot
 const burger = document.getElementById('burger');
 const mobnav = document.getElementById('mobnav');
 if (burger && mobnav) {
-  burger.addEventListener('click', () => {
-    mobnav.classList.toggle('hidden');
-    burger.innerHTML = mobnav.classList.contains('hidden')
-      ? '<i class="fa-solid fa-bars"></i>' : '<i class="fa-solid fa-xmark"></i>';
-  });
-  mobnav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    mobnav.classList.add('hidden');
-    burger.innerHTML = '<i class="fa-solid fa-bars"></i>';
-  }));
+  const setMenu = (open) => {
+    mobnav.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.innerHTML = open
+      ? '<i class="fa-solid fa-xmark text-xl"></i>'
+      : '<i class="fa-solid fa-bars text-xl"></i>';
+  };
+  burger.addEventListener('click', () => setMenu(!mobnav.classList.contains('open')));
+  mobnav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  // close on resize up to desktop
+  window.addEventListener('resize', () => { if (window.innerWidth >= 1024) setMenu(false); });
 }
 
 // quote form -> WhatsApp
