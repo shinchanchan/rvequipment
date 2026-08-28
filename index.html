@@ -90,25 +90,31 @@ h1,h2,h3,h4,h5,.f-head{font-family:var(--f-head); font-weight:700; letter-spacin
   background:rgba(14,124,123,0.10); color:var(--blue); font-size:20px; transition:all .28s ease;}
 .card:hover .icon-tile{background:var(--blue); color:#fff; transform:scale(1.06);}
 
-/* product image card */
-.pcard{position:relative; border-radius:16px; overflow:hidden; border:1px solid var(--line); background:#fff;}
-.pcard .shot{height:210px; background:var(--bg); display:flex; align-items:center; justify-content:center; overflow:hidden;}
-.pcard .shot img{width:100%; height:100%; object-fit:contain; padding:16px; transition:transform .5s cubic-bezier(.2,.7,.3,1);}
-.pcard:hover .shot img{transform:scale(1.07);}
-.pcard::after{content:""; position:absolute; inset:0; border-radius:16px; pointer-events:none;
-  box-shadow:inset 0 0 0 2px transparent; transition:box-shadow .28s ease;}
-.pcard:hover::after{box-shadow:inset 0 0 0 2px var(--blue);}
+/* ================= PARALLAX & PREMIUM PRODUCT STYLES ================= */
+.parallax-wrap{position:relative; overflow:hidden;}
+.parallax-img{will-change:transform; width:100%; height:125%; object-fit:cover; position:absolute; inset:0; transition:transform 0.1s linear;}
 
-/* JLG-style equipment hub cards */
+/* Premium hub / product cards */
 .hub{background:#fff; border:1px solid var(--line); border-radius:18px; overflow:hidden;
   display:flex; flex-direction:column; box-shadow:0 1px 3px rgba(15,23,42,0.05);
   transition:transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease, border-color .3s ease;}
 .hub:hover{transform:translateY(-8px); box-shadow:0 26px 50px -16px rgba(15,23,42,0.22); border-color:rgba(14,124,123,0.4);}
-.hub-shot{position:relative; height:230px; background:linear-gradient(160deg,#fff, var(--bg)); display:flex; align-items:center; justify-content:center; overflow:hidden;}
-.hub-shot img{width:100%; height:100%; object-fit:contain; padding:22px; transition:transform .55s cubic-bezier(.2,.7,.3,1);}
-.hub:hover .hub-shot img{transform:scale(1.08) rotate(-1deg);}
+
+.hub-shot{position:relative; height:230px; background:linear-gradient(160deg,#ffffff 0%, #f8fafc 40%, #eef2f6 100%); display:flex; align-items:center; justify-content:center; overflow:hidden;}
+.hub-shot::before{content:""; position:absolute; inset:0; background:radial-gradient(circle at 50% 0%, rgba(255,255,255,0.95) 0%, transparent 60%); pointer-events:none; z-index:1;}
+.hub-shot::after{content:""; position:absolute; inset:0; border-radius:0; pointer-events:none; box-shadow:inset 0 0 0 2px transparent; transition:box-shadow .28s ease; z-index:2;}
+.hub:hover .hub-shot::after{box-shadow:inset 0 0 0 2px var(--blue);}
+
+.hub-shot img{width:100%; height:100%; object-fit:contain; padding:22px; transition:transform .55s cubic-bezier(.2,.7,.3,1), filter .3s ease; position:relative; z-index:1; filter:drop-shadow(0 8px 16px rgba(0,0,0,0.12));}
+.hub:hover .hub-shot img{transform:scale(1.08) rotate(-1deg); filter:drop-shadow(0 20px 40px rgba(0,0,0,0.22));}
+
+/* Shine sweep effect */
+.shine{position:absolute; top:0; left:0; width:60%; height:100%; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent); transform:translateX(-150%) skewX(-20deg); pointer-events:none; z-index:4; transition:none;}
+.hub:hover .shine{animation:shineSweep 0.9s ease forwards;}
+@keyframes shineSweep{0%{transform:translateX(-150%) skewX(-20deg);}100%{transform:translateX(250%) skewX(-20deg);}}
+
 .hub-badge{position:absolute; top:14px; left:14px; font-family:var(--f-num); font-size:12px; font-weight:600;
-  color:#fff; background:var(--navy); padding:5px 12px; border-radius:9999px; letter-spacing:0.01em;}
+  color:#fff; background:var(--navy); padding:5px 12px; border-radius:9999px; letter-spacing:0.01em; z-index:3;}
 .hub-body{padding:24px 22px 22px; display:flex; flex-direction:column; flex:1;}
 .hub-meta{display:flex; gap:12px; padding:14px 0; margin-bottom:16px; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
 .hub-meta > div{flex:1; display:flex; flex-direction:column;}
@@ -134,6 +140,8 @@ h1,h2,h3,h4,h5,.f-head{font-family:var(--f-head); font-weight:700; letter-spacin
   .hub-link{font-size:13.5px;}
 }
 
+/* Parallax background sections */
+.parallax-bg{background-attachment:fixed; background-size:cover; background-position:center; background-repeat:no-repeat;}
 
 /* nav — static solid color, same at top and on scroll */
 #nav{background:#0B2027;
@@ -304,11 +312,11 @@ details.faq[open] .chev{transform:rotate(180deg);}
       </div>
     </div>
 
-    <!-- Framed image panel + floating stat cards -->
+    <!-- Framed image panel + floating stat cards (PARALLAX) -->
     <div class="relative" data-aos="fade-left" data-aos-delay="120">
-      <div class="relative rounded-[26px] overflow-hidden shadow-2xl border-4 border-white">
-        <img src="https://images.unsplash.com/photo-1624027492684-327af1fb7559?auto=format&fit=crop&w=1400&q=85"
-             alt="Industrial production floor" class="w-full h-[380px] md:h-[460px] object-cover" loading="eager">
+      <div class="relative rounded-[26px] overflow-hidden shadow-2xl border-4 border-white parallax-wrap h-[380px] md:h-[460px]">
+        <img src="WhatsApp Image 2026-08-26 at 10.09.01 AM.jpeg" data-speed="0.18"
+             alt="2000 Kg hydraulic stacker fabrication at RV Equipments workshop" class="parallax-img" loading="eager">
         <div class="absolute inset-0 bg-gradient-to-t from-[var(--navy)]/45 to-transparent"></div>
         <div class="absolute top-5 left-5 f-num text-xs font-semibold text-white bg-[var(--navy)]/80 backdrop-blur px-3.5 py-1.5 rounded-full">
           Since 2016 · Chennai
@@ -410,9 +418,9 @@ details.faq[open] .chev{transform:rotate(180deg);}
     </div>
 
     <div data-aos="fade-left">
-      <div class="rounded-2xl overflow-hidden border border-[var(--line)] shadow-lg">
-        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1400&q=85"
-             alt="Fabrication work in progress at an industrial workshop" class="w-full h-[420px] object-cover" loading="lazy">
+      <div class="rounded-2xl overflow-hidden border border-[var(--line)] shadow-lg parallax-wrap h-[420px]">
+        <img src="WhatsApp Image 2026-08-26 at 10.16.09 AM (1).jpeg" data-speed="0.12"
+             alt="Premium finished elevator cabin by RV Equipments" class="parallax-img" loading="lazy">
       </div>
       <div class="grid grid-cols-3 gap-4 mt-4">
         <div class="card p-5 text-center">
@@ -432,7 +440,7 @@ details.faq[open] .chev{transform:rotate(180deg);}
   </div>
 </section>
 
-<!-- ================= PRODUCT CATEGORIES (JLG-style hub grid) ================= -->
+<!-- ================= PRODUCT CATEGORIES (Premium hub grid) ================= -->
 <section id="products" class="py-20 md:py-28 bg-[var(--bg)]">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
     <div class="flex flex-wrap items-end justify-between gap-6 mb-12" data-aos="fade-up">
@@ -450,7 +458,8 @@ details.faq[open] .chev{transform:rotate(180deg);}
 
       <article class="hub" data-aos="fade-up">
         <div class="hub-shot">
-          <img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339483491/IY/NR/AN/34444234/whatsapp-image-2023-08-30-at-3-42-24-pm-500x500.jpeg" alt="Wall mounted industrial lift" loading="lazy">
+          <img src="WhatsApp Image 2026-08-26 at 10.08.44 AM.jpeg" alt="Industrial goods lift installed on site" loading="lazy">
+          <div class="shine"></div>
           <span class="hub-badge">Up to 5 Ton</span>
         </div>
         <div class="hub-body">
@@ -466,7 +475,8 @@ details.faq[open] .chev{transform:rotate(180deg);}
 
       <article class="hub" data-aos="fade-up" data-aos-delay="60">
         <div class="hub-shot">
-          <img src="https://5.imimg.com/data5/SELLER/Default/2024/2/391199800/ZO/AF/QT/34444234/industrial-material-handling-lift-capacity-3-ton-250x250.png" alt="Goods lift" loading="lazy">
+          <img src="WhatsApp Image 2026-08-26 at 10.16.08 AM (2).jpeg" alt="Goods lift installed in retail store" loading="lazy">
+          <div class="shine"></div>
           <span class="hub-badge">1–3 Ton</span>
         </div>
         <div class="hub-body">
@@ -482,8 +492,9 @@ details.faq[open] .chev{transform:rotate(180deg);}
 
       <article class="hub" data-aos="fade-up" data-aos-delay="120">
         <div class="hub-shot">
-          <img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339340900/RN/CX/VL/34444234/hydraulic-lifting-trolley-500x500.jpg" alt="Hydraulic lifting trolley" loading="lazy">
-          <span class="hub-badge">500 kg–1 Ton</span>
+          <img src="WhatsApp Image 2026-08-26 at 10.08.23 AM.jpeg" alt="5000kg hydraulic pallet truck" loading="lazy">
+          <div class="shine"></div>
+          <span class="hub-badge">500 kg–5 Ton</span>
         </div>
         <div class="hub-body">
           <h3 class="f-head text-xl mb-2">Hydraulic Trolleys</h3>
@@ -498,7 +509,8 @@ details.faq[open] .chev{transform:rotate(180deg);}
 
       <article class="hub" data-aos="fade-up">
         <div class="hub-shot">
-          <img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339339251/UJ/FP/ET/34444234/1-ton-hydraulic-scissor-lift-table-500x500.jpg" alt="Hydraulic scissor lift table" loading="lazy">
+          <img src="WhatsApp Image 2026-08-26 at 10.08.21 AM.jpeg" alt="Hydraulic scissor lift table" loading="lazy">
+          <div class="shine"></div>
           <span class="hub-badge">1 Ton</span>
         </div>
         <div class="hub-body">
@@ -514,12 +526,13 @@ details.faq[open] .chev{transform:rotate(180deg);}
 
       <article class="hub" data-aos="fade-up" data-aos-delay="60">
         <div class="hub-shot">
-          <img src="https://5.imimg.com/data5/SELLER/Default/2025/10/555855049/PC/UY/EP/34444234/mild-steel-electric-double-mast-stacker-500x500.png" alt="Electric double mast stacker" loading="lazy">
+          <img src="WhatsApp Image 2026-08-26 at 10.16.07 AM (1).jpeg" alt="Electric double mast stacker with battery" loading="lazy">
+          <div class="shine"></div>
           <span class="hub-badge">1500 kg</span>
         </div>
         <div class="hub-body">
-          <h3 class="f-head text-xl mb-2">Stackers</h3>
-          <p class="text-sm text-[var(--muted)] leading-relaxed mb-5">Manual, semi-electric, battery and double-mast stackers for racking and order picking.</p>
+          <h3 class="f-head text-xl mb-2">Electric Stackers</h3>
+          <p class="text-sm text-[var(--muted)] leading-relaxed mb-5">Battery-powered and double-mast stackers for racking, order picking and warehouse ops.</p>
           <div class="hub-meta">
             <div><span class="f-num text-[var(--navy)] text-lg">3500</span><small>mm lift</small></div>
             <div><span class="f-num text-[var(--navy)] text-lg">4</span><small>drive types</small></div>
@@ -530,21 +543,33 @@ details.faq[open] .chev{transform:rotate(180deg);}
 
       <article class="hub" data-aos="fade-up" data-aos-delay="120">
         <div class="hub-shot">
-          <img src="https://5.imimg.com/data5/SELLER/Default/2024/2/391192587/WE/NM/MT/34444234/6-ton-dock-leveler-250x250.png" alt="Hydraulic dock leveler" loading="lazy">
-          <span class="hub-badge">4–10 Ton</span>
+          <img src="WhatsApp Image 2026-08-26 at 10.16.09 AM.jpeg" alt="Hydraulic manual stacker on site" loading="lazy">
+          <div class="shine"></div>
+          <span class="hub-badge">1–2 Ton</span>
         </div>
         <div class="hub-body">
-          <h3 class="f-head text-xl mb-2">Dock Levelers &amp; Ramps</h3>
-          <p class="text-sm text-[var(--muted)] leading-relaxed mb-5">Hydraulic dock levelers and loading ramps that bridge truck beds to the warehouse floor.</p>
+          <h3 class="f-head text-xl mb-2">Hydraulic Stackers</h3>
+          <p class="text-sm text-[var(--muted)] leading-relaxed mb-5">Manual, semi-electric and hydraulic stackers for heavy lifting and loading bay duty.</p>
           <div class="hub-meta">
-            <div><span class="f-num text-[var(--navy)] text-lg">10 T</span><small>ramp cap.</small></div>
-            <div><span class="f-num text-[var(--navy)] text-lg">Auto</span><small>&amp; manual</small></div>
+            <div><span class="f-num text-[var(--navy)] text-lg">2000</span><small>kg cap.</small></div>
+            <div><span class="f-num text-[var(--navy)] text-lg">MS</span><small>frame</small></div>
           </div>
-          <a href="#contact" class="hub-link">Explore dock equipment <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#contact" class="hub-link">Explore stackers <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </article>
 
     </div>
+  </div>
+</section>
+
+<!-- ================= PARALLAX DIVIDER ================= -->
+<section class="relative py-28 overflow-hidden">
+  <div class="absolute inset-0 parallax-bg" style="background-image:url('WhatsApp Image 2026-08-26 at 10.16.07 AM (1).jpeg');"></div>
+  <div class="absolute inset-0 bg-[var(--navy)]/85"></div>
+  <div class="relative max-w-4xl mx-auto px-5 text-center" data-aos="fade-up">
+    <div class="eyebrow mb-5 !bg-white/10 !text-white">RV Equipments</div>
+    <h2 class="h-section text-white mb-6">Engineered for Your Floor Plan</h2>
+    <p class="text-slate-300 text-lg leading-relaxed">From hydraulic stackers to custom goods lifts — every unit is sized to your load, lift height and duty cycle before the first cut.</p>
   </div>
 </section>
 
@@ -781,29 +806,41 @@ details.faq[open] .chev{transform:rotate(180deg);}
       <p class="text-[var(--muted)]">Tap any image to view it full screen.</p>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-5" data-aos="fade-up" data-aos-delay="80">
-      <a href="https://5.imimg.com/data5/SELLER/Default/2025/10/555824517/VQ/XO/EK/34444234/industrial-material-handling-lift-500x500.png" class="glightbox card !p-0 overflow-hidden block bg-white" data-gallery="rv">
-        <img src="https://5.imimg.com/data5/SELLER/Default/2025/10/555824517/VQ/XO/EK/34444234/industrial-material-handling-lift-250x250.png" alt="Industrial material handling lift" loading="lazy" class="w-full h-52 object-contain p-4">
+      <a href="WhatsApp Image 2026-08-26 at 10.08.21 AM.jpeg" class="glightbox card !p-0 overflow-hidden block bg-white" data-gallery="rv">
+        <img src="WhatsApp Image 2026-08-26 at 10.08.21 AM.jpeg" alt="Hydraulic scissor lift table" loading="lazy" class="w-full h-52 object-contain p-4">
       </a>
-      <a href="https://5.imimg.com/data5/SELLER/Default/2025/10/555898963/FB/FX/WN/34444234/winch-rope-industrial-lift-250x250.png" class="glightbox card !p-0 overflow-hidden block bg-white" data-gallery="rv">
-        <img src="https://5.imimg.com/data5/SELLER/Default/2025/10/555898963/FB/FX/WN/34444234/winch-rope-industrial-lift-250x250.png" alt="Winch rope industrial lift" loading="lazy" class="w-full h-52 object-contain p-4">
+      <a href="WhatsApp Image 2026-08-26 at 10.08.21 AM (1).jpeg" class="glightbox card !p-0 overflow-hidden block bg-white" data-gallery="rv">
+        <img src="WhatsApp Image 2026-08-26 at 10.08.21 AM (1).jpeg" alt="Scissor lift table front view" loading="lazy" class="w-full h-52 object-contain p-4">
       </a>
-      <a href="https://5.imimg.com/data5/SELLER/Default/2025/10/555729600/CS/UR/PP/34444234/mild-steel-manual-stacker-250x250.png" class="glightbox card !p-0 overflow-hidden block bg-white" data-gallery="rv">
-        <img src="https://5.imimg.com/data5/SELLER/Default/2025/10/555729600/CS/UR/PP/34444234/mild-steel-manual-stacker-250x250.png" alt="Mild steel manual stacker" loading="lazy" class="w-full h-52 object-contain p-4">
+      <a href="WhatsApp Image 2026-08-26 at 10.08.22 AM.jpeg" class="glightbox card !p-0 overflow-hidden block bg-white" data-gallery="rv">
+        <img src="WhatsApp Image 2026-08-26 at 10.08.22 AM.jpeg" alt="Orange platform goods lift" loading="lazy" class="w-full h-52 object-contain p-4">
       </a>
-      <a href="https://5.imimg.com/data5/SELLER/Default/2024/2/391192587/WE/NM/MT/34444234/6-ton-dock-leveler-250x250.png" class="glightbox card !p-0 overflow-hidden block bg-white" data-gallery="rv">
-        <img src="https://5.imimg.com/data5/SELLER/Default/2024/2/391192587/WE/NM/MT/34444234/6-ton-dock-leveler-250x250.png" alt="6 ton dock leveler" loading="lazy" class="w-full h-52 object-contain p-4">
+      <a href="WhatsApp Image 2026-08-26 at 10.08.23 AM.jpeg" class="glightbox card !p-0 overflow-hidden block bg-white" data-gallery="rv">
+        <img src="WhatsApp Image 2026-08-26 at 10.08.23 AM.jpeg" alt="5000kg hydraulic pallet truck" loading="lazy" class="w-full h-52 object-contain p-4">
       </a>
-      <a href="https://5.imimg.com/data5/SELLER/Default/2024/2/391202168/MP/RR/KT/34444234/industrial-loading-ramp-capacity-10-ton-250x250.png" class="glightbox card !p-0 overflow-hidden block bg-white" data-gallery="rv">
-        <img src="https://5.imimg.com/data5/SELLER/Default/2024/2/391202168/MP/RR/KT/34444234/industrial-loading-ramp-capacity-10-ton-250x250.png" alt="10 ton industrial loading ramp" loading="lazy" class="w-full h-52 object-contain p-4">
+      <a href="WhatsApp Image 2026-08-26 at 10.08.23 AM (1).jpeg" class="glightbox card !p-0 overflow-hidden block bg-white" data-gallery="rv">
+        <img src="WhatsApp Image 2026-08-26 at 10.08.23 AM (1).jpeg" alt="Hydraulic pallet truck front view" loading="lazy" class="w-full h-52 object-contain p-4">
       </a>
-      <a href="https://5.imimg.com/data5/SELLER/Default/2023/8/339338902/AK/TF/VD/34444234/hydraulic-scissor-lift-250x250.jpg" class="glightbox card !p-0 overflow-hidden block bg-white" data-gallery="rv">
-        <img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339338902/AK/TF/VD/34444234/hydraulic-scissor-lift-250x250.jpg" alt="Hydraulic scissor lift" loading="lazy" class="w-full h-52 object-contain p-4">
+      <a href="WhatsApp Image 2026-08-26 at 10.09.01 AM.jpeg" class="glightbox card !p-0 overflow-hidden block bg-white" data-gallery="rv">
+        <img src="WhatsApp Image 2026-08-26 at 10.09.01 AM.jpeg" alt="2000kg hydraulic stacker in workshop" loading="lazy" class="w-full h-52 object-contain p-4">
       </a>
-      <a href="https://5.imimg.com/data5/SELLER/Default/2025/10/555855049/PC/UY/EP/34444234/mild-steel-electric-double-mast-stacker-500x500.png" class="glightbox card !p-0 overflow-hidden block bg-white" data-gallery="rv">
-        <img src="https://5.imimg.com/data5/SELLER/Default/2025/10/555855049/PC/UY/EP/34444234/mild-steel-electric-double-mast-stacker-250x250.png" alt="Electric double mast stacker" loading="lazy" class="w-full h-52 object-contain p-4">
+      <a href="WhatsApp Image 2026-08-26 at 10.16.06 AM.jpeg" class="glightbox card !p-0 overflow-hidden block bg-white" data-gallery="rv">
+        <img src="WhatsApp Image 2026-08-26 at 10.16.06 AM.jpeg" alt="Orange hydraulic stacker workshop" loading="lazy" class="w-full h-52 object-contain p-4">
       </a>
-      <a href="https://5.imimg.com/data5/SELLER/Default/2023/8/339340900/RN/CX/VL/34444234/hydraulic-lifting-trolley-500x500.jpg" class="glightbox card !p-0 overflow-hidden block bg-white" data-gallery="rv">
-        <img src="https://5.imimg.com/data5/SELLER/Default/2023/8/339340900/RN/CX/VL/34444234/hydraulic-lifting-trolley-250x250.jpg" alt="Hydraulic lifting trolley" loading="lazy" class="w-full h-52 object-contain p-4">
+      <a href="WhatsApp Image 2026-08-26 at 10.16.07 AM.jpeg" class="glightbox card !p-0 overflow-hidden block bg-white" data-gallery="rv">
+        <img src="WhatsApp Image 2026-08-26 at 10.16.07 AM.jpeg" alt="Indoor goods lift installation" loading="lazy" class="w-full h-52 object-contain p-4">
+      </a>
+      <a href="WhatsApp Image 2026-08-26 at 10.16.08 AM (1).jpeg" class="glightbox card !p-0 overflow-hidden block bg-white" data-gallery="rv">
+        <img src="WhatsApp Image 2026-08-26 at 10.16.08 AM (1).jpeg" alt="Clean yellow platform lift install" loading="lazy" class="w-full h-52 object-contain p-4">
+      </a>
+      <a href="WhatsApp Image 2026-08-26 at 10.16.08 AM (3).jpeg" class="glightbox card !p-0 overflow-hidden block bg-white" data-gallery="rv">
+        <img src="WhatsApp Image 2026-08-26 at 10.16.08 AM (3).jpeg" alt="Orange stacker outdoors" loading="lazy" class="w-full h-52 object-contain p-4">
+      </a>
+      <a href="WhatsApp Image 2026-08-26 at 10.16.09 AM.jpeg" class="glightbox card !p-0 overflow-hidden block bg-white" data-gallery="rv">
+        <img src="WhatsApp Image 2026-08-26 at 10.16.09 AM.jpeg" alt="Yellow hydraulic stacker assembly" loading="lazy" class="w-full h-52 object-contain p-4">
+      </a>
+      <a href="WhatsApp Image 2026-08-26 at 10.16.09 AM (1).jpeg" class="glightbox card !p-0 overflow-hidden block bg-white" data-gallery="rv">
+        <img src="WhatsApp Image 2026-08-26 at 10.16.09 AM (1).jpeg" alt="Premium finished elevator cabin" loading="lazy" class="w-full h-52 object-contain p-4">
       </a>
     </div>
   </div>
@@ -1032,7 +1069,6 @@ window.addEventListener('load', () => {
 if (window.AOS) {
   AOS.init({ once: true, duration: 700, offset: 80, easing: 'ease-out-cubic' });
 } else {
-  // reveal any content that was waiting on AOS animations
   document.querySelectorAll('[data-aos]').forEach(el => el.classList.add('aos-animate'));
 }
 
@@ -1041,7 +1077,7 @@ if (window.GLightbox) {
   try { GLightbox({ selector: '.glightbox' }); } catch (e) { console.warn('GLightbox init skipped:', e); }
 }
 
-// Swiper — guard so a missing library never halts the rest of the script
+// Swiper — guard
 if (window.Swiper) {
   try {
     new Swiper('.tswiper', {
@@ -1053,8 +1089,6 @@ if (window.Swiper) {
       breakpoints: { 768: { slidesPerView: 2 } }
     });
   } catch (e) { console.warn('Swiper init skipped:', e); }
-} else {
-  console.warn('Swiper library not loaded — testimonials will not auto-slide.');
 }
 
 // animated counters
@@ -1114,9 +1148,24 @@ if (burger && mobnav) {
   };
   burger.addEventListener('click', () => setMenu(!mobnav.classList.contains('open')));
   mobnav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
-  // close on resize up to desktop
   window.addEventListener('resize', () => { if (window.innerWidth >= 1024) setMenu(false); });
 }
+
+// ================= PARALLAX ENGINE =================
+function updateParallax() {
+  document.querySelectorAll('.parallax-wrap').forEach(wrap => {
+    const img = wrap.querySelector('.parallax-img');
+    if (!img) return;
+    const rect = wrap.getBoundingClientRect();
+    const speed = parseFloat(img.dataset.speed) || 0.2;
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      const offset = (window.innerHeight - rect.top) * speed * 0.15;
+      img.style.transform = `translateY(${-offset}px) scale(1.12)`;
+    }
+  });
+}
+window.addEventListener('scroll', updateParallax, { passive: true });
+updateParallax();
 
 // quote form -> WhatsApp
 function sendToWhatsApp(e) {
